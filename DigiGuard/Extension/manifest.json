@@ -1,0 +1,17 @@
+{
+  "name": "Safe Net",
+  "version": "0.0.15",
+  "manifest_version": 2,
+  "description": "Report to the police",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [ "activeTab"  ,"http://*/" ],
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+
+}

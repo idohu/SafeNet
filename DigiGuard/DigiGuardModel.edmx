@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DGGuardDBmdfModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DGGuardDBmdfModelStoreContainer">
+    <EntitySet Name="DimCategories" EntityType="DGGuardDBmdfModel.Store.DimCategories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DimStatus" EntityType="DGGuardDBmdfModel.Store.DimStatus" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DimUsers" EntityType="DGGuardDBmdfModel.Store.DimUsers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FactReports" EntityType="DGGuardDBmdfModel.Store.FactReports" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__FactRepor__Categ__4D94879B" Association="DGGuardDBmdfModel.Store.FK__FactRepor__Categ__4D94879B">
+      <End Role="DimCategories" EntitySet="DimCategories" />
+      <End Role="FactReports" EntitySet="FactReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FactRepor__Statu__4E88ABD4" Association="DGGuardDBmdfModel.Store.FK__FactRepor__Statu__4E88ABD4">
+      <End Role="DimStatus" EntitySet="DimStatus" />
+      <End Role="FactReports" EntitySet="FactReports" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="DimCategories">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DimStatus">
+    <Key>
+      <PropertyRef Name="StatusID" />
+    </Key>
+    <Property Name="StatusID" Type="int" Nullable="false" />
+    <Property Name="StatusName" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DimUsers">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="FactReports">
+    <Key>
+      <PropertyRef Name="ReportID" />
+    </Key>
+    <Property Name="ReportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+    <Property Name="URL" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ScreenShot" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="true" />
+    <Property Name="Location" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Email" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="StatusID" Type="int" Nullable="true" />
+  </EntityType>
+  <Association Name="FK__FactRepor__Categ__4D94879B">
+    <End Role="DimCategories" Type="DGGuardDBmdfModel.Store.DimCategories" Multiplicity="0..1" />
+    <End Role="FactReports" Type="DGGuardDBmdfModel.Store.FactReports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DimCategories">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="FactReports">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FactRepor__Statu__4E88ABD4">
+    <End Role="DimStatus" Type="DGGuardDBmdfModel.Store.DimStatus" Multiplicity="0..1" />
+    <End Role="FactReports" Type="DGGuardDBmdfModel.Store.FactReports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DimStatus">
+        <PropertyRef Name="StatusID" />
+      </Principal>
+      <Dependent Role="FactReports">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DGGuardDBmdfModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DGGuardEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="DimCategories" EntityType="DGGuardDBmdfModel.DimCategory" />
+          <EntitySet Name="DimStatus" EntityType="DGGuardDBmdfModel.DimStatu" />
+          <EntitySet Name="DimUsers" EntityType="DGGuardDBmdfModel.DimUser" />
+          <EntitySet Name="FactReports" EntityType="DGGuardDBmdfModel.FactReport" />
+          <AssociationSet Name="FK__FactRepor__Categ__4D94879B" Association="DGGuardDBmdfModel.FK__FactRepor__Categ__4D94879B">
+            <End Role="DimCategories" EntitySet="DimCategories" />
+            <End Role="FactReports" EntitySet="FactReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FactRepor__Statu__4E88ABD4" Association="DGGuardDBmdfModel.FK__FactRepor__Statu__4E88ABD4">
+            <End Role="DimStatus" EntitySet="DimStatus" />
+            <End Role="FactReports" EntitySet="FactReports" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="DimCategory">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Category" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="FactReports" Relationship="DGGuardDBmdfModel.FK__FactRepor__Categ__4D94879B" FromRole="DimCategories" ToRole="FactReports" />
+        </EntityType>
+        <EntityType Name="DimStatu">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <Property Name="StatusName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="FactReports" Relationship="DGGuardDBmdfModel.FK__FactRepor__Statu__4E88ABD4" FromRole="DimStatus" ToRole="FactReports" />
+        </EntityType>
+        <EntityType Name="DimUser">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="FactReport">
+          <Key>
+            <PropertyRef Name="ReportID" />
+          </Key>
+          <Property Name="ReportID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="URL" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ScreenShot" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="Location" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="StatusID" Type="Int32" />
+          <NavigationProperty Name="DimCategory" Relationship="DGGuardDBmdfModel.FK__FactRepor__Categ__4D94879B" FromRole="FactReports" ToRole="DimCategories" />
+          <NavigationProperty Name="DimStatu" Relationship="DGGuardDBmdfModel.FK__FactRepor__Statu__4E88ABD4" FromRole="FactReports" ToRole="DimStatus" />
+        </EntityType>
+        <Association Name="FK__FactRepor__Categ__4D94879B">
+          <End Role="DimCategories" Type="DGGuardDBmdfModel.DimCategory" Multiplicity="0..1" />
+          <End Role="FactReports" Type="DGGuardDBmdfModel.FactReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimCategories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="FactReports">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FactRepor__Statu__4E88ABD4">
+          <End Role="DimStatus" Type="DGGuardDBmdfModel.DimStatu" Multiplicity="0..1" />
+          <End Role="FactReports" Type="DGGuardDBmdfModel.FactReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimStatus">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="FactReports">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DGGuardDBmdfModelStoreContainer" CdmEntityContainer="DGGuardEntities">
+    <EntitySetMapping Name="DimCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(DGGuardDBmdfModel.DimCategory)">
+        <MappingFragment StoreEntitySet="DimCategories">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DimStatus">
+      <EntityTypeMapping TypeName="IsTypeOf(DGGuardDBmdfModel.DimStatu)">
+        <MappingFragment StoreEntitySet="DimStatus">
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DimUsers">
+      <EntityTypeMapping TypeName="IsTypeOf(DGGuardDBmdfModel.DimUser)">
+        <MappingFragment StoreEntitySet="DimUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FactReports">
+      <EntityTypeMapping TypeName="IsTypeOf(DGGuardDBmdfModel.FactReport)">
+        <MappingFragment StoreEntitySet="FactReports">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="ScreenShot" ColumnName="ScreenShot" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,11 @@
+C:\Users\Ido\Documents\Visual Studio 2012\Projects\DigiGuard\DigiGuard\bin\clientaccesspolicy.xml
+C:\Users\Ido\Documents\Visual Studio 2012\Projects\DigiGuard\DigiGuard\bin\crossdomain.xml
+C:\Users\Ido\Documents\Visual Studio 2012\Projects\DigiGuard\DigiGuard\bin\DigiGuard.dll
+C:\Users\Ido\Documents\Visual Studio 2012\Projects\DigiGuard\DigiGuard\bin\DigiGuard.pdb
+C:\Users\Ido\Documents\Visual Studio 2012\Projects\DigiGuard\DigiGuard\bin\EntityFramework.dll
+C:\Users\Ido\Documents\Visual Studio 2012\Projects\DigiGuard\DigiGuard\bin\Newtonsoft.Json.dll
+C:\Users\Ido\Documents\Visual Studio 2012\Projects\DigiGuard\DigiGuard\bin\EntityFramework.xml
+C:\Users\Ido\Documents\Visual Studio 2012\Projects\DigiGuard\DigiGuard\bin\Newtonsoft.Json.xml
+C:\Users\Ido\Documents\Visual Studio 2012\Projects\DigiGuard\DigiGuard\obj\Release\DigiGuard.csprojResolveAssemblyReference.cache
+C:\Users\Ido\Documents\Visual Studio 2012\Projects\DigiGuard\DigiGuard\obj\Release\DigiGuard.dll
+C:\Users\Ido\Documents\Visual Studio 2012\Projects\DigiGuard\DigiGuard\obj\Release\DigiGuard.pdb

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DGGuardDBmdfModelStoreContainer" CdmEntityContainer="DGGuardEntities">
+    <EntitySetMapping Name="DimCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(DGGuardDBmdfModel.DimCategory)">
+        <MappingFragment StoreEntitySet="DimCategories">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DimStatus">
+      <EntityTypeMapping TypeName="IsTypeOf(DGGuardDBmdfModel.DimStatu)">
+        <MappingFragment StoreEntitySet="DimStatus">
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DimUsers">
+      <EntityTypeMapping TypeName="IsTypeOf(DGGuardDBmdfModel.DimUser)">
+        <MappingFragment StoreEntitySet="DimUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FactReports">
+      <EntityTypeMapping TypeName="IsTypeOf(DGGuardDBmdfModel.FactReport)">
+        <MappingFragment StoreEntitySet="FactReports">
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="ScreenShot" ColumnName="ScreenShot" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
