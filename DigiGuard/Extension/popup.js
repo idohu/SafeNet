@@ -1,6 +1,5 @@
 // Copyright (c) 2012,2013 Peter Coles - http://mrcoles.com/ - All rights reserved.
 // Use of this source code is governed by the MIT License found in LICENSE
-
 //
 // console object for debugging
 //
@@ -74,6 +73,21 @@ function sendScrollMessage(tab) {
     });
 }
 
+/* A function creator for callbacks */
+function doStuffWithDOM(domContent) {
+    console.log("I received the following DOM content:\n" + domContent);
+}
+
+/* When the browser-action button is clicked... */
+chrome.browserAction.onClicked.addListener(function(tab) {
+    /*...check the URL of the active tab against our pattern and... */
+   // if (urlRegex.test(tab.url)) {
+        /* ...if it matches, send a message specifying a callback too */
+        chrome.tabs.sendMessage(tab.id, { text: "report_back" },
+                                doStuffWithDOM);
+    //}
+});
+
 function sendLogMessage(data) {
     chrome.tabs.getSelected(null, function(tab) {
         chrome.tabs.sendRequest(tab.id, {msg: 'logMessage', data: data}, function() {});
@@ -94,6 +108,7 @@ function capturePage(data, sender, callback) {
 
     $('bar').style.width = parseInt(data.complete * 100, 10) + '%';
     E.DOM=data.html;
+	
     // Get window.devicePixelRatio from the page, not the popup
     var scale = data.devicePixelRatio && data.devicePixelRatio !== 1 ?
         1 / data.devicePixelRatio : 1;
@@ -219,7 +234,8 @@ chrome.tabs.getSelected(null, function(tab) {
             show('loading');
             sendScrollMessage(tab);
         });
-
+		chrome.tabs.sendMessage(tab.id, { text: "report_back" },
+                                doStuffWithDOM);
         window.setTimeout(function() {
             if (!loaded) {
                 show('uh-oh');
@@ -241,13 +257,13 @@ function SendData(imgURL){
     E.location=document.getElementById('location').value;
     var data=JSON.stringify({"url": E.url,"img":imgURL,"dom":"","category": E.category,"name": E.fname,"lName": E.lname,
     "phone": E.phone,"email": E.email,"description": E.desc,"location": E.location});
-
+    var url = "http://localhost:2314/ClientService.asmx";
+    //var url = "http://amirdor.cloudapp.net/SafeNet/ClientService.asmx";
     var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function(data) {
 			console.log(data)
-			
     };
-	xhr.open("POST", "http://amirdor.cloudapp.net/SafeNet/ClientService.asmx/PostReport", true);
+	xhr.open("POST", url + "/PostReport", true);
 	xhr.setRequestHeader("Content-Type","application/json; charset=utf-8");
 	xhr.send(data);
 }
