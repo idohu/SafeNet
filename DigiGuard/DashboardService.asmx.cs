@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel.Security;
 using System.ServiceModel.Web;
 using System.Web;
+using System.Web.Script.Services;
 using System.Web.Services;
 using Newtonsoft.Json;
 
