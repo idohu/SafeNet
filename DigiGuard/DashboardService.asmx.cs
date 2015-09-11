@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Objects.DataClasses;
 using System.Linq;
 using System.ServiceModel.Security;
 using System.ServiceModel.Web;
@@ -68,7 +69,7 @@ namespace DigiGuard
                 return JsonConvert.SerializeObject(list, settings);
             }
 
-            
+
         }
 
         [WebMethod]
@@ -109,7 +110,7 @@ namespace DigiGuard
         [WebInvoke(Method = "POST",
             BodyStyle = WebMessageBodyStyle.Wrapped,
             ResponseFormat = WebMessageFormat.Json)]
-        public void changeStatus(Cluster sCluster)
+        public void changeStatus(Cluster sCluster, string user)
         {
             using (DGGuardEntities entities = new DGGuardEntities())
             {
@@ -118,14 +119,41 @@ namespace DigiGuard
                     var data = entities.FactReports.FirstOrDefault(x => x.ReportID == report.ReportID);
                     if (data != null)
                     {
-                        if (data.StatusID<entities.DimStatus.Max(x=>x.StatusID))
+                        if (data.StatusID < entities.DimStatus.Max(x => x.StatusID))
+                        {
+                            string oldStat = data.DimStatu.StatusName;
                             data.StatusID++;
+                            Change c = new Change()
+                            {
+                                ReportID = data.ReportID,
+                                UserName = user,
+                                Data = "Status Changed From " + oldStat + " To " + entities.DimStatus.First(x=>x.StatusID==data.StatusID+1).StatusName,
+                                Time = DateTime.Now
+                            };
+                            entities.Changes.Add(c);
+                        }
                         entities.SaveChanges();
                     }
                 }
             }
         }
 
+        [WebMethod]
+        [WebInvoke(Method = "POST",
+            BodyStyle = WebMessageBodyStyle.Wrapped,
+            ResponseFormat = WebMessageFormat.Json)]
+        public string GetUserActions(string user)
+        {
+            using (DGGuardEntities entities = new DGGuardEntities())
+            {
+                var data = entities.Changes.Where(x => x.UserName == user).ToList();
+                JsonSerializerSettings settings = new JsonSerializerSettings
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                };
+                return JsonConvert.SerializeObject(data, settings);
+            }
+        }
     }
 
     public class Cluster

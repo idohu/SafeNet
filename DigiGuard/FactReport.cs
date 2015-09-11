@@ -14,6 +14,11 @@ namespace DigiGuard
     
     public partial class FactReport
     {
+        public FactReport()
+        {
+            this.Changes = new HashSet<Change>();
+        }
+    
         public int ReportID { get; set; }
         public System.DateTime TimeStamp { get; set; }
         public string URL { get; set; }
@@ -29,5 +34,6 @@ namespace DigiGuard
     
         public virtual DimCategory DimCategory { get; set; }
         public virtual DimStatu DimStatu { get; set; }
+        public virtual ICollection<Change> Changes { get; set; }
     }
 }

@@ -3,134 +3,105 @@
   <head>
       <meta charset=utf-8>
       <title>Full page screen catpure</title>
-      <script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+      <!-- Latest compiled and minified JavaScript -->
+      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+      <link rel="stylesheet" type="text/css" href="css/custom.css">
+
       <!-- there are rendering bugs when styles aren't inline... -->
-      <style>
-body {
-    font: normal 12px/16px helvetica,aria,sans-serif;
-}
-div,p { margin: 0; padding: 0; }
 
-.clr { overflow: hidden; }
-.left { float: left; }
-.right { float: right; }
-
-a {
-	color: #3681b3;
-	text-decoration: none;
-}
-a:hover { color: #265c80; }
-a:active { color: #000; }
-
-#wrap {
-    width: 300px;
-    padding-top: 9px;
-    font-size: 12px;
-    color: #888;
-}
-
-#wrap>div { display: none; }
-#wrap>#loading { display: block; }
-
-#loading .loader {
-    position: relative;
-    border-top: 12px dotted #000;
-    height: 9px;
-}
-
-#loading .bar {
-    position: absolute;
-    top: -21px;
-    left: 0;
-    height: 30px;
-    width: 0%;
-    background: #fff url(loader.gif) scroll no-repeat center right;
-}
-p { word-wrap: break-word; }
-      </style>
   </head>
   <body>
-      <div id="wrap">
 
-          <div id="loading">
-              <div style="display: none" class="loader"><div class="bar" id="bar"></div></div>
-              <div class="clr container">
-                  <div class="row">
-                      <div class="col-sm-2 text-center">
-                          <img src="iconCop.png" style="width: 50%;">
+  <div id="wrap" class="text-center" style="padding:10px 0;width: 300px;">
+      <div id="loading">
+      <div style="display: none" class="loader"><div class="bar" id="bar"></div></div>
+      <div class="row">
+          <div class="col-sm-2 text-center">
+              <img src="logo_w.png" style="width: 50%;">
 
+          </div>
+      </div>      <!-- Main Form -->
+      <div class="login-form-1">
+              <div class="login-form-main-message"></div>
+              <div class="main-login-form">
+                  <div class="login-group">
+                      <div class="form-group">
+                          <label for="fname" class="sr-only">First Name</label>
+                          <input id="fname" name="fname" type="text" class="form-control" placeholder="First Name" value=""/>
                       </div>
+                      <div class="form-group">
+                      <label for="lname" class="sr-only">Last Name</label>
+                      <input id="lname" name="lname" type="text"  class="form-control" placeholder="Last Name" value=""/>
                   </div>
-                  <br>
-                  <div class="row col-lg-4">
-                      <p>First Name:</p>
-                      <input id="fname" type="text" value=""/>
-                  </div>
-                  <div class="row col-lg-4">
-                      <p>Last Name:</p>
-                      <input id="lname" type="text" value=""/>
-                  </div>
-                  <div class="row col-lg-4">
-                      <p>Phone:</p>
-                      <input id="phone" type="tel" value=""/>
-                  </div>
-                  <div class="row col-lg-4">
-                      <p>Email for Notification:</p>
-                      <input id="email" type="email" value=""/>
-                  </div>
+                      <div class="form-group">
+                          <label for="phone" class="sr-only">Phone</label>
+                          <input id="phone" name="phone" type="tel" class="form-control" placeholder="Phone" value=""/>
+                      </div>
+                      <div class="form-group">
+                          <label for="email" class="sr-only">Email</label>
+                          <input id="email" name="email" type="email" value="" placeholder="Email" class="form-control"/>
+                      </div>
+                      <div class="form-group">
+                          <label for="location" class="sr-only">Location</label>
+                          <input id="location" name="location" class="form-control" placeholder="Location" type="text" value=""/>
+                      </div>
 
-                  <div class="row col-lg-4">
-                      <p>Location:</p>
-                      <input id="location" type="text" value=""/>
-                  </div>
+                      <div class="form-group">
+                          <label for="desc" class="sr-only">Description</label>
+                          <textarea id="desc" name="desc" placeholder="Description" class="form-control"></textarea>                      </div>
+                      <div class="form-group login-group-checkbox">
+                          <select class="form-control" id="category">
+                              <option id="cc" value="" disabled selected    >Choose Category</option>
+                              <option value="1">Abuse</option>
+                              <option value="3">Shaming</option>
+                              <option value="2">Incitement</option>
+                              <option value="4">Suicide</option>
+                              <option value="5">Pedophile</option>
+                              <option value="6">Terror</option>
 
-                 <div class="row col-lg-4">
-                     <p>Description:</p>
-                     <textarea id="desc"></textarea>
-                 </div>
-
-
-                  <br>
-                  <div class="row col-lg-4">
-                      <p>Category</p>
-                      <select id="category">
-                          <option value="0">Choose Category</option>
-                          <option value="1">Abuse</option>
-                          <option value="3">Shaming</option>
-                          <option value="2">Incitement</option>
-                          <option value="4">Suicide</option>
-                          <option value="5">Pedophile</option>
-                          <option value="6">Terror</option>
-
-                      </select>
+                          </select>                   </div>
 
                   </div>
+                  <button type="submit" id="btn_report" class="login-button"><span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span></button>
 
-                  <br>
-                  <button class="btn btn-success">Report</button>
-                  <br>
-                  <br>
+                  </div>
               </div>
-          </div>
-          <div id="invalid">
+</div>
 
-              Full Page Screen Capture cannot be run on this page
-              because of Google Chrome Web Store policies. Try
-              another page on the web!
-          </div>
-          <div id="uh-oh">
-              Uh oh, something went wrong! Try reloading the page
-              and running this again. If the problem persists,
-              please report the error in the
-              <a href="https://chrome.google.com/webstore/support/fdpohaocaechififmbbbbbknoalclacl?hl=en&gl=US#bug">Chrome webstore</a>
-              and please include the URL you tried it on and the
-              version of Chrome.
-          </div>
-      </div>
+
+</div>
+  <!-- end:Main Form -->
+  <div id="invalid" style="display: none">
+
+      Full Page Screen Capture cannot be run on this page
+      because of Google Chrome Web Store policies. Try
+      another page on the web!
+  </div>
+  <div id="uh-oh" style="display: none">
+      Uh oh, something went wrong! Try reloading the page
+      and running this again. If the problem persists,
+      please report the error in the
+      <a href="https://chrome.google.com/webstore/support/fdpohaocaechififmbbbbbknoalclacl?hl=en&gl=US#bug">Chrome webstore</a>
+      and please include the URL you tried it on and the
+      version of Chrome.
+  </div>
+
+
 
       <!-- JavaScript and HTML must be in separate files for security. -->
       <script src="popup.js"></script>
+      <script src="js/jquery.js"></script>
+      <script src="js/jquery-migrate-1.2.1.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+
+      <script type="text/javascript" src="js/custom.js"></script>
   </body>
 </html>

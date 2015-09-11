@@ -4,13 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7bcfa28612d1466eb4eaadff7d4ba793" Name="Diagram1">
+      <Diagram DiagramId="7bcfa28612d1466eb4eaadff7d4ba793" Name="Diagram1" ZoomLevel="95">
         <EntityTypeShape EntityType="DGGuardDBmdfModel.DimCategory" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DGGuardDBmdfModel.DimStatu" Width="1.5" PointX="5.75" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DGGuardDBmdfModel.DimUser" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DGGuardDBmdfModel.FactReport" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="DGGuardDBmdfModel.FK__FactRepor__Categ__4D94879B" ManuallyRouted="false" />
         <AssociationConnector Association="DGGuardDBmdfModel.FK__FactRepor__Statu__4E88ABD4" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DGGuardDBmdfModel.Change" Width="1.5" PointX="7.625" PointY="4.25" />
+        <AssociationConnector Association="DGGuardDBmdfModel.FK_Changes_ToReports" />
+        <AssociationConnector Association="DGGuardDBmdfModel.FK_Changes_ToUsers" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

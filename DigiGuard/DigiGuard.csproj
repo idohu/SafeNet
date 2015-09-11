@@ -404,11 +404,14 @@
     <Content Include="Dashboard\other-user-listing.html" />
     <Content Include="Dashboard\other-user-profile.html" />
     <Content Include="Dashboard\scripts\common.js" />
+    <Content Include="Dashboard\scripts\datatables\dataTables.searchHighlight.js" />
     <Content Include="Dashboard\scripts\datatables\jquery.dataTables.js" />
     <Content Include="Dashboard\scripts\datatables\jquery.dataTables.min.js" />
     <Content Include="Dashboard\scripts\flot\jquery.flot.js" />
+    <Content Include="Dashboard\scripts\flot\jquery.flot.navigate.js" />
     <Content Include="Dashboard\scripts\flot\jquery.flot.pie.js" />
     <Content Include="Dashboard\scripts\flot\jquery.flot.resize.js" />
+    <Content Include="Dashboard\scripts\flot\jquery.flot.time.js" />
     <Content Include="Dashboard\scripts\jquery-1.9.1.min.js" />
     <Content Include="Dashboard\scripts\jquery-ui-1.10.1.custom.min.js" />
     <Content Include="Dashboard\scripts\login.js" />
@@ -453,6 +456,9 @@
     <Compile Include="AuthenticationService.asmx.cs">
       <DependentUpon>AuthenticationService.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Change.cs">
+      <DependentUpon>DigiGuardModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ClientService.asmx.cs">
       <DependentUpon>ClientService.asmx</DependentUpon>

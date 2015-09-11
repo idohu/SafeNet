@@ -13,6 +13,15 @@
       <End Role="DimStatus" EntitySet="DimStatus" />
       <End Role="FactReports" EntitySet="FactReports" />
     </AssociationSet>
+    <EntitySet Name="Changes" EntityType="DGGuardDBmdfModel.Change" />
+    <AssociationSet Name="FK_Changes_ToReports" Association="DGGuardDBmdfModel.FK_Changes_ToReports">
+      <End Role="FactReport" EntitySet="FactReports" />
+      <End Role="Change" EntitySet="Changes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Changes_ToUsers" Association="DGGuardDBmdfModel.FK_Changes_ToUsers">
+      <End Role="DimUser" EntitySet="DimUsers" />
+      <End Role="Change" EntitySet="Changes" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="DimCategory">
     <Key>
@@ -36,6 +45,7 @@
     </Key>
     <Property Name="UserName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
     <Property Name="Password" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Changes" Relationship="DGGuardDBmdfModel.FK_Changes_ToUsers" FromRole="DimUser" ToRole="Change" />
   </EntityType>
   <EntityType Name="FactReport">
     <Key>
@@ -55,6 +65,7 @@
     <Property Name="StatusID" Type="Int32" />
     <NavigationProperty Name="DimCategory" Relationship="DGGuardDBmdfModel.FK__FactRepor__Categ__4D94879B" FromRole="FactReports" ToRole="DimCategories" />
     <NavigationProperty Name="DimStatu" Relationship="DGGuardDBmdfModel.FK__FactRepor__Statu__4E88ABD4" FromRole="FactReports" ToRole="DimStatus" />
+    <NavigationProperty Name="Changes" Relationship="DGGuardDBmdfModel.FK_Changes_ToReports" FromRole="FactReport" ToRole="Change" />
   </EntityType>
   <Association Name="FK__FactRepor__Categ__4D94879B">
     <End Role="DimCategories" Type="DGGuardDBmdfModel.DimCategory" Multiplicity="0..1" />
@@ -77,6 +88,42 @@
       </Principal>
       <Dependent Role="FactReports">
         <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Change">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="UserName" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="ReportID" />
+    <Property Type="String" Name="Data" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FactReport" Relationship="DGGuardDBmdfModel.FK_Changes_ToReports" FromRole="Change" ToRole="FactReport" />
+    <NavigationProperty Name="DimUser" Relationship="DGGuardDBmdfModel.FK_Changes_ToUsers" FromRole="Change" ToRole="DimUser" />
+    <Property Type="DateTime" Name="Time" Precision="3" />
+  </EntityType>
+  <Association Name="FK_Changes_ToReports">
+    <End Type="DGGuardDBmdfModel.FactReport" Role="FactReport" Multiplicity="0..1" />
+    <End Type="DGGuardDBmdfModel.Change" Role="Change" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FactReport">
+        <PropertyRef Name="ReportID" />
+      </Principal>
+      <Dependent Role="Change">
+        <PropertyRef Name="ReportID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Changes_ToUsers">
+    <End Type="DGGuardDBmdfModel.DimUser" Role="DimUser" Multiplicity="0..1" />
+    <End Type="DGGuardDBmdfModel.Change" Role="Change" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DimUser">
+        <PropertyRef Name="UserName" />
+      </Principal>
+      <Dependent Role="Change">
+        <PropertyRef Name="UserName" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

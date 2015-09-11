@@ -29,5 +29,6 @@ namespace DigiGuard
         public DbSet<DimStatu> DimStatus { get; set; }
         public DbSet<DimUser> DimUsers { get; set; }
         public DbSet<FactReport> FactReports { get; set; }
+        public DbSet<Change> Changes { get; set; }
     }
 }

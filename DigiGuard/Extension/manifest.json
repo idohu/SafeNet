@@ -1,5 +1,5 @@
 {
-  "name": "Safe Net",
+  "name": "Watcher",
   "version": "1.0",
   "manifest_version": 2,
   "description": "Report to the police",
@@ -15,9 +15,9 @@
   "permissions": ["tabs", "activeTab"  ,"http://*/", "storage"],
   "options_page": "options.html",
   "icons": {
-    "16": "icon.png",
-    "48": "icon.png",
-    "128": "icon.png"
+    "16": "logo_w_e.png",
+    "48": "logo_w_e.png",
+    "128": "logo_w_e.png"
   }
 
 }

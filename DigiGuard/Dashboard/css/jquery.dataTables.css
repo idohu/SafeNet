@@ -453,3 +453,7 @@ table.dataTable td {
     margin-top: 0.5em;
   }
 }
+
+table.dataTable span.highlight {
+  background-color: #FFFF88;
+}

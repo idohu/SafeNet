@@ -106,7 +106,7 @@ chrome.extension.onRequest.addListener(function(request, sender, callback) {
 function capturePage(data, sender, callback) {
     var canvas;
 
-    $('bar').style.width = parseInt(data.complete * 100, 10) + '%';
+  //  $('bar').style.width = parseInt(data.complete * 100, 10) + '%';
     E.DOM=data.html;
 	
     // Get window.devicePixelRatio from the page, not the popup
@@ -222,7 +222,7 @@ function openPage() {
 //
 // start doing stuff immediately! - including error cases
 //
-document.addEventListener("click", function(){
+document.getElementById("btn_report").addEventListener("click", function(){
 
 chrome.tabs.getSelected(null, function(tab) {
 
@@ -231,7 +231,7 @@ chrome.tabs.getSelected(null, function(tab) {
         E.url=tab.url;
         chrome.tabs.executeScript(tab.id, {file: 'page.js'}, function() {
             loaded = true;
-            show('loading');
+       //     show('loading');
             sendScrollMessage(tab);
         });
 		chrome.tabs.sendMessage(tab.id, { text: "report_back" },
@@ -248,6 +248,8 @@ chrome.tabs.getSelected(null, function(tab) {
 });
 
 function SendData(imgURL){
+    document.getElementById('btn_report').disabled = true;
+
     E.category=document.getElementById('category').value;
     E.fname=document.getElementById('fname').value;
     E.lname=document.getElementById('lname').value;
@@ -255,13 +257,20 @@ function SendData(imgURL){
     E.email=document.getElementById('email').value;
     E.desc=document.getElementById('desc').value;
     E.location=document.getElementById('location').value;
-    var data=JSON.stringify({"url": E.url,"img":imgURL,"dom":"","category": E.category,"name": E.fname,"lName": E.lname,
+    var data=JSON.stringify({"url": E.url,"img":imgURL,"dom": E.DOM,"category": E.category,"name": E.fname,"lName": E.lname,
     "phone": E.phone,"email": E.email,"description": E.desc,"location": E.location});
     var url = "http://localhost:2314/ClientService.asmx";
     //var url = "http://amirdor.cloudapp.net/SafeNet/ClientService.asmx";
+    var flag=false
     var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function(data) {
 			console.log(data)
+        if(flag){
+            document.getElementById('btn_report').disabled = false;
+
+            window.close()
+        }
+        flag=true;
     };
 	xhr.open("POST", url + "/PostReport", true);
 	xhr.setRequestHeader("Content-Type","application/json; charset=utf-8");
