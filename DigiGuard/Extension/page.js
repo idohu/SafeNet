@@ -99,7 +99,7 @@ function getPositions(callback) {
         var next = arrangements.shift(),
             x = next[0], y = next[1];
 
-        window.scrollTo(x, y);
+//        window.scrollTo(x, y);
 
         var data = {
             msg: 'capturePage',

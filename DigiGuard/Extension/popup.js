@@ -105,7 +105,6 @@ chrome.extension.onRequest.addListener(function(request, sender, callback) {
 
 function capturePage(data, sender, callback) {
     var canvas;
-
   //  $('bar').style.width = parseInt(data.complete * 100, 10) + '%';
     E.DOM=data.html;
 	
@@ -124,11 +123,7 @@ function capturePage(data, sender, callback) {
 
 
     if (!screenshot.canvas) {
-        canvas = document.createElement('canvas');
-        canvas.width = data.totalWidth;
-        canvas.height = data.totalHeight;
-        screenshot.canvas = canvas;
-        screenshot.ctx = canvas.getContext('2d');
+       
 
         // sendLogMessage('TOTALDIMENSIONS: ' + data.totalWidth + ', ' + data.totalHeight);
 
@@ -150,7 +145,12 @@ function capturePage(data, sender, callback) {
                 var image = new Image();
                 image.onload = function() {
                     // sendLogMessage('img dims: ' + image.width + ', ' + image.height);
-                    screenshot.ctx.drawImage(image, data.x, data.y);
+                    canvas = document.createElement('canvas');
+                    canvas.width = image.width;
+                    canvas.height =image.height;
+                    screenshot.canvas = canvas;
+                    screenshot.ctx = canvas.getContext('2d');
+                    screenshot.ctx.drawImage(image,0, 0);
                     callback(true);
                 };
                 image.src = dataURI;
@@ -247,7 +247,8 @@ chrome.tabs.getSelected(null, function(tab) {
 });
 });
 
-function SendData(imgURL){
+function SendData(imgURL) {
+    
     document.getElementById('btn_report').disabled = true;
 
     E.category = document.getElementById('category').value == "" ? -1 : document.getElementById('category').value;
