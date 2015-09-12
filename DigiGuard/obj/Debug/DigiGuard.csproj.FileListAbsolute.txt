@@ -9,3 +9,14 @@ C:\Users\Ido\Documents\Visual Studio 2012\Projects\DigiGuard\DigiGuard\obj\Debug
 C:\Users\Ido\Documents\Visual Studio 2012\Projects\DigiGuard\DigiGuard\obj\Debug\DigiGuard.pdb
 C:\Users\Ido\Documents\Visual Studio 2012\Projects\DigiGuard\DigiGuard\bin\clientaccesspolicy.xml
 C:\Users\Ido\Documents\Visual Studio 2012\Projects\DigiGuard\DigiGuard\bin\crossdomain.xml
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\SafeNet\DigiGuard\bin\clientaccesspolicy.xml
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\SafeNet\DigiGuard\bin\crossdomain.xml
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\SafeNet\DigiGuard\bin\DigiGuard.dll.config
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\SafeNet\DigiGuard\bin\DigiGuard.dll
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\SafeNet\DigiGuard\bin\DigiGuard.pdb
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\SafeNet\DigiGuard\bin\EntityFramework.dll
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\SafeNet\DigiGuard\bin\Newtonsoft.Json.dll
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\SafeNet\DigiGuard\bin\EntityFramework.xml
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\SafeNet\DigiGuard\obj\Debug\DigiGuard.csprojResolveAssemblyReference.cache
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\SafeNet\DigiGuard\obj\Debug\DigiGuard.dll
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\SafeNet\DigiGuard\obj\Debug\DigiGuard.pdb

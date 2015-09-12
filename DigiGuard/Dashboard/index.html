@@ -84,7 +84,6 @@
                             <li><a href="#"><i class="menu-icon icon-inbox"></i>Inbox <b class="label green pull-right">11</b> </a></li>
                             <li><a href="charts.html"><i class="menu-icon icon-tasks"></i>Admin</a></li>
                         </ul>
-
                     </div>
                 </nav>
                 <div class="span10">
@@ -298,8 +297,7 @@
                         else
                             $('td', nRow).eq(3)[0].innerHTML = "<i class='label label-warning'>" + $('td', nRow).eq(3)[0].innerText + "</i>";
                         if (aData.status.StatusName == "In Progress")
-                            $('td', nRow).eq(3)[0].innerHTML = "<i class='label label-success'>" + $('td', nRow).eq(3)[0].innerText + "</i>";
-
+                            $('td', nRow).eq(3)[0].innerHTML = "<i class='label label-success'>" + $('td', nRow).eq(3)[0].innerText + "</i>";//removeClass().addClass('not-important-record');
                         if (indexes.indexOf(aData.URL) > -1) {
                             rows.push(nRow);
                         }
