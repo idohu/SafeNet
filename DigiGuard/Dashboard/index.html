@@ -69,7 +69,7 @@
                                                               <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#">My Actions</a></li>
-                                    <li><a href="#">Logout</a></li>
+                                    <li><a href="#" onclick="LogOut">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -83,14 +83,14 @@
         <div class="wrapper">
             <div class="container">
                 <div class="row">
-                    <div class="span3">
+                    <div class="span2">
                         <div class="sidebar">
                             <h3>Top-Priority Reports</h3>
                             <br />
                             <img src="images/topPriority.jpg" />
                         </div>
                     </div>
-                    <div class="span9">
+                    <div class="span10">
                         <div class="content">
                             <div class="btn-controls">
                                 <div class="btn-box-row row-fluid">
@@ -120,7 +120,7 @@
                                 </div>
                                 <div class="module-body table">
                                     <table id="tbl_reports" cellpadding="0" cellspacing="0" border="0" class="dataTable table no-footer"
-                                           width="100%">
+                                           width="90%">
                                         <thead>
                                             <tr>
                                                 <th></th>
@@ -129,6 +129,8 @@
                                                 <th>Rank
                                                 </th>
                                                 <th>Status
+                                                </th>
+                                                <th>Time
                                                 </th>
                                             </tr>
                                         </thead>
@@ -208,7 +210,8 @@
                     '<thead><tr><th>Screen Shot</th><th>Description</th><th>Location</th><th>Name</th><th>Phone</th><th>Time Stamp</th></tr></thead><tbody id="tbody">';
                 // `d` is the original data object for the row
                 for (i in d) {
-                    s += ("<tr><td><a href=\"" + d[i].ScreenShot + "\" target=\"_blank\">" + d[i].ScreenShot + "</a></td><td>" + d[i].Description + "</td><td>" +
+                    s += ("<tr><td><a href=\"" + "http://localhost:2314/" + d[i].ScreenShot.substring(70) + "\" target=\"_blank\"><img src=\"" +
+                        "http://localhost:2314/"+d[i].ScreenShot.substring(70) + "\" style=\"height:100px;\"></img></a></td><td>" + d[i].Description + "</td><td>" +
                         d[i].Location + "</td><td>" + d[i].Name + "  " + d[i].LastName + "</td><td>" + d[i].Phone +
                         "</td><td>" + d[i].TimeStamp + "</td></tr>");
                 }
@@ -217,8 +220,7 @@
             }
             var indexes = [];
             setInterval(function () {
-                //if (!flag)
-                //    table.ajax.reload(null, false);
+                if (!flag)
                 $.ajax({
                     type: "POST",
                     url: url + "/GetReports", //Relative or absolute path to response.php file
@@ -237,7 +239,7 @@
                             }
                         }
                         for (var i = reports.length; i < r.length; i++) {
-                            indexes.push(reports[i].URL);
+                            indexes.push(r[i].URL);
                         }
 
                     
@@ -275,19 +277,20 @@
                             },
                             { "data": "URL" },
                             { "data": "Amount" },
-                            { "className": 'status-control', "data": "status.StatusName" }
+                            { "className": 'status-control', "data": "status.StatusName" },
+                            { "data":"Time", "visible":false}
                         ],
-                        "order": [[2, 'desc']],
+                        "order": [[4, 'desc']],
                         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-                            if (aData.Amount >=5 )
-                                $(nRow).removeClass().addClass('important-record');
+                            if (aData.Amount >= 5)
+                                $('td', nRow).eq(3).removeClass().addClass('label label-important');//.removeClass().addClass('important-record');
                             else 
-                                $(nRow).removeClass().addClass('not-important-record');
+                                $('td', nRow).eq(3).removeClass().addClass('label label-warning');//removeClass().addClass('not-important-record');
                             if (aData.status.StatusName == "In Progress")
-                                $(nRow).removeClass().addClass('progress-record');
+                                $('td', nRow).eq(3).removeClass().addClass('label label-success');//.removeClass().addClass('progress-record');
 
                             if (indexes.indexOf(aData.URL)>-1) {
-                                $(nRow).removeClass().addClass('new-record');
+                               // $('td', nRow).eq(3).removeClass().addClass('label label-important');//.removeClass().addClass('new-record');
                                 rows.push(nRow);
                             }
                         },
@@ -337,7 +340,19 @@
             //        ],
             //        "order": [[2, 'desc']]
             //    });
-            
+            function LogOut() {
+                createCookie("WatcherUser", "", -1);
+                window.location = "login.html";
+            }
+            function createCookie(name, value, days) {
+                if (days) {
+                    var date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    var expires = "; expires=" + date.toGMTString();
+                }
+                else var expires = "";
+                document.cookie = name + "=" + value + expires + "; path=/";
+            }
         </script>
     </body>
 </html>

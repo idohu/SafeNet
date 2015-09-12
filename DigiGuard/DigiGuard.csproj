@@ -430,21 +430,40 @@
     <Content Include="Extension\.idea\scopes\scope_settings.xml" />
     <Content Include="Extension\.idea\vcs.xml" />
     <Content Include="Extension\.idea\workspace.xml" />
+    <Content Include="Extension\background.html" />
+    <Content Include="Extension\background.js" />
+    <Content Include="Extension\content.js" />
     <Content Include="Extension\css\bootstrap-theme.css" />
     <Content Include="Extension\css\bootstrap-theme.min.css" />
     <Content Include="Extension\css\bootstrap.css" />
     <Content Include="Extension\css\bootstrap.min.css" />
+    <Content Include="Extension\css\custom.css" />
+    <Content Include="Extension\css\font-awesome.min.css" />
     <Content Include="Extension\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Extension\icon.png" />
     <Content Include="Extension\icon128.png" />
     <Content Include="Extension\icon16.png" />
     <Content Include="Extension\icon48.png" />
+    <Content Include="Extension\iconCop.jpg" />
+    <Content Include="Extension\iconCop.png" />
     <Content Include="Extension\js\bootstrap.js" />
     <Content Include="Extension\js\bootstrap.min.js" />
+    <Content Include="Extension\js\custom.js" />
+    <Content Include="Extension\js\jquery-migrate-1.2.1.js" />
     <Content Include="Extension\js\jquery.js" />
     <Content Include="Extension\js\npm.js" />
+    <Content Include="Extension\loader.gif" />
+    <Content Include="Extension\logo_w.png" />
+    <Content Include="Extension\logo_w_e.png" />
+    <Content Include="Extension\options.html" />
+    <Content Include="Extension\options.js" />
+    <Content Include="Extension\page.js" />
+    <Content Include="Extension\popup.html" />
+    <Content Include="Extension\popup.js" />
+    <Content Include="Extension\promo-440-280.png" />
     <Content Include="Extension\screenshots\active-screenshot.png" />
     <Content Include="Extension\screenshots\finished-screenshot.png" />
+    <Content Include="Extension\words.js" />
     <Content Include="PrioritizedDigiGuard.asmx" />
     <Content Include="Resources\details_close.png" />
     <Content Include="Resources\details_open.png" />
@@ -564,6 +583,10 @@
     <Content Include="Extension\psds\promo.psd" />
     <Content Include="Extension\psds\sun-rays.psd" />
     <Content Include="Dashboard\scripts\jquery.validate.min.js" />
+    <Content Include="Extension\LICENSE" />
+    <Content Include="Extension\manifest.json" />
+    <Content Include="Extension\README.md" />
+    <Content Include="Extension\words.json" />
     <None Include="Properties\PublishProfiles\digi.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -572,7 +595,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="UploadImage\" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

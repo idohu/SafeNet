@@ -250,10 +250,10 @@ chrome.tabs.getSelected(null, function(tab) {
 function SendData(imgURL){
     document.getElementById('btn_report').disabled = true;
 
-    E.category=document.getElementById('category').value;
-    E.fname=document.getElementById('fname').value;
-    E.lname=document.getElementById('lname').value;
-    E.phone=document.getElementById('phone').value;
+    E.category = document.getElementById('category').value == "" ? -1 : document.getElementById('category').value;
+    E.fname = document.getElementById('fname').value;
+    E.lname = document.getElementById('lname').value;
+    E.phone = document.getElementById('phone').value;
     E.email=document.getElementById('email').value;
     E.desc=document.getElementById('desc').value;
     E.location=document.getElementById('location').value;
@@ -261,14 +261,14 @@ function SendData(imgURL){
     "phone": E.phone,"email": E.email,"description": E.desc,"location": E.location});
     var url = "http://localhost:2314/ClientService.asmx";
     //var url = "http://amirdor.cloudapp.net/SafeNet/ClientService.asmx";
-    var flag=false
+    var flag = false;
     var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function(data) {
 			console.log(data)
         if(flag){
             document.getElementById('btn_report').disabled = false;
 
-            window.close()
+            window.close();
         }
         flag=true;
     };
