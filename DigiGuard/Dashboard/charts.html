@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edmin</title>
+    <title>Watcher</title>
     <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link type="text/css" href="css/theme.css" rel="stylesheet">
@@ -17,11 +17,11 @@
             <div class="container">
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
                     <i class="icon-reorder shaded"></i></a><a class="brand" href="index.html">
-                        <img width="150px" src="images/iconCop.png" />
+                        <img style="width: 30%;" src="images/logo_big.png" />
                     </a>
                 <div class="nav-collapse collapse navbar-inverse-collapse">
                     <ul class="nav pull-right">
-                        <li><a href="#">Support </a></li>
+                        <li><a data-toggle="modal" href="#HelpModal">Support </a></li>
                         <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="images/user.png" class="nav-avatar" />
                             <b class="caret"></b></a>
@@ -122,7 +122,7 @@
     <!--/.wrapper-->
     <div class="footer">
         <div class="container">
-            <b class="copyright">&copy; 2014 Edmin - EGrappler.com </b>All rights reserved.
+            <b class="copyright">&copy; 2015 Wathcer - Dor & Ido </b>All rights reserved.
         </div>
     </div>
     <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -135,6 +135,22 @@
                 <div class="modal-body" id="generalModalBody">
                 </div>
                 <div class="modal-footer" id="generalModalFooter">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="HelpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="H1">Support</h4>
+                </div>
+                <div class="modal-body" id="Div1">
+                    Here Will Be Support Text!
+                </div>
+                <div class="modal-footer" id="Div2">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
