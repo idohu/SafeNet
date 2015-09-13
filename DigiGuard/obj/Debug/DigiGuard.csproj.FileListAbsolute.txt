@@ -20,3 +20,14 @@ Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\SafeNet\DigiGuard\bin\EntityFramework.x
 Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\SafeNet\DigiGuard\obj\Debug\DigiGuard.csprojResolveAssemblyReference.cache
 Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\SafeNet\DigiGuard\obj\Debug\DigiGuard.dll
 Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\SafeNet\DigiGuard\obj\Debug\DigiGuard.pdb
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\DigiGuard\bin\clientaccesspolicy.xml
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\DigiGuard\bin\crossdomain.xml
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\DigiGuard\bin\DigiGuard.dll.config
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\DigiGuard\bin\DigiGuard.dll
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\DigiGuard\bin\DigiGuard.pdb
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\DigiGuard\bin\EntityFramework.dll
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\DigiGuard\bin\Newtonsoft.Json.dll
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\DigiGuard\bin\EntityFramework.xml
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\DigiGuard\obj\Debug\DigiGuard.csprojResolveAssemblyReference.cache
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\DigiGuard\obj\Debug\DigiGuard.dll
+Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\DigiGuard\obj\Debug\DigiGuard.pdb

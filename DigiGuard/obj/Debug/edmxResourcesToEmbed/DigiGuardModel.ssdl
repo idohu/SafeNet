@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DGGuardDBmdfModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="DGGuardDBmdfModelStoreContainer">
-    <EntitySet Name="Changes" EntityType="DGGuardDBmdfModel.Store.Changes" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DimCategories" EntityType="DGGuardDBmdfModel.Store.DimCategories" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DimStatus" EntityType="DGGuardDBmdfModel.Store.DimStatus" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DimUsers" EntityType="DGGuardDBmdfModel.Store.DimUsers" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="FactReports" EntityType="DGGuardDBmdfModel.Store.FactReports" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Changes" EntityType="DGGuardDBmdfModel.Store.Changes" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK__FactRepor__Categ__4D94879B" Association="DGGuardDBmdfModel.Store.FK__FactRepor__Categ__4D94879B">
       <End Role="DimCategories" EntitySet="DimCategories" />
       <End Role="FactReports" EntitySet="FactReports" />
@@ -15,24 +15,14 @@
       <End Role="FactReports" EntitySet="FactReports" />
     </AssociationSet>
     <AssociationSet Name="FK_Changes_ToReports" Association="DGGuardDBmdfModel.Store.FK_Changes_ToReports">
-      <End Role="FactReports" EntitySet="FactReports" />
-      <End Role="Changes" EntitySet="Changes" />
+      <End Role="FactReport" EntitySet="FactReports" />
+      <End Role="Change" EntitySet="Changes" />
     </AssociationSet>
     <AssociationSet Name="FK_Changes_ToUsers" Association="DGGuardDBmdfModel.Store.FK_Changes_ToUsers">
-      <End Role="DimUsers" EntitySet="DimUsers" />
-      <End Role="Changes" EntitySet="Changes" />
+      <End Role="DimUser" EntitySet="DimUsers" />
+      <End Role="Change" EntitySet="Changes" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="Changes">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="UserName" Type="nvarchar" MaxLength="20" />
-    <Property Name="ReportID" Type="int" />
-    <Property Name="Data" Type="nvarchar(max)" />
-    <Property Name="Time" Type="datetime" />
-  </EntityType>
   <EntityType Name="DimCategories">
     <Key>
       <PropertyRef Name="CategoryId" />
@@ -58,18 +48,28 @@
     <Key>
       <PropertyRef Name="ReportID" />
     </Key>
-    <Property Name="ReportID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ReportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TimeStamp" Type="datetime" Nullable="false" />
     <Property Name="URL" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ScreenShot" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CategoryID" Type="int" />
-    <Property Name="Location" Type="nvarchar" MaxLength="50" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" />
-    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
-    <Property Name="Phone" Type="nvarchar" MaxLength="10" />
-    <Property Name="Description" Type="nvarchar(max)" />
-    <Property Name="Email" Type="nvarchar" MaxLength="50" />
-    <Property Name="StatusID" Type="int" />
+    <Property Name="CategoryID" Type="int" Nullable="true" />
+    <Property Name="Location" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Email" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="StatusID" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Changes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="ReportID" Type="int" Nullable="true" />
+    <Property Name="Data" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Time" Type="datetime" Nullable="true" />
   </EntityType>
   <Association Name="FK__FactRepor__Categ__4D94879B">
     <End Role="DimCategories" Type="DGGuardDBmdfModel.Store.DimCategories" Multiplicity="0..1" />
@@ -96,25 +96,25 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Changes_ToReports">
-    <End Role="FactReports" Type="DGGuardDBmdfModel.Store.FactReports" Multiplicity="0..1" />
-    <End Role="Changes" Type="DGGuardDBmdfModel.Store.Changes" Multiplicity="*" />
+    <End Role="FactReport" Type="DGGuardDBmdfModel.Store.FactReports" Multiplicity="0..1" />
+    <End Role="Change" Type="DGGuardDBmdfModel.Store.Changes" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="FactReports">
+      <Principal Role="FactReport">
         <PropertyRef Name="ReportID" />
       </Principal>
-      <Dependent Role="Changes">
+      <Dependent Role="Change">
         <PropertyRef Name="ReportID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Changes_ToUsers">
-    <End Role="DimUsers" Type="DGGuardDBmdfModel.Store.DimUsers" Multiplicity="0..1" />
-    <End Role="Changes" Type="DGGuardDBmdfModel.Store.Changes" Multiplicity="*" />
+    <End Role="DimUser" Type="DGGuardDBmdfModel.Store.DimUsers" Multiplicity="0..1" />
+    <End Role="Change" Type="DGGuardDBmdfModel.Store.Changes" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="DimUsers">
+      <Principal Role="DimUser">
         <PropertyRef Name="UserName" />
       </Principal>
-      <Dependent Role="Changes">
+      <Dependent Role="Change">
         <PropertyRef Name="UserName" />
       </Dependent>
     </ReferentialConstraint>

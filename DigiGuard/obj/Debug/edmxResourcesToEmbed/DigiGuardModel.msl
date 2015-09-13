@@ -44,13 +44,13 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Changes">
-      <EntityTypeMapping TypeName="DGGuardDBmdfModel.Change">
+      <EntityTypeMapping TypeName="IsTypeOf(DGGuardDBmdfModel.Change)">
         <MappingFragment StoreEntitySet="Changes">
-          <ScalarProperty Name="Time" ColumnName="Time" />
-          <ScalarProperty Name="Data" ColumnName="Data" />
-          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

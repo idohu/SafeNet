@@ -1,14 +1,14 @@
 
 -- --------------------------------------------------
--- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
+-- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/25/2015 15:30:37
--- Generated from EDMX file: C:\Users\Ido\Documents\Visual Studio 2012\Projects\DigiGuard\DigiGuard\DigiGuardModel.edmx
+-- Date Created: 09/13/2015 08:38:43
+-- Generated from EDMX file: Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\DigiGuard\DigiGuardModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [safenet];
+USE [watcher];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -23,11 +23,20 @@ GO
 IF OBJECT_ID(N'[dbo].[FK__FactRepor__Statu__4E88ABD4]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[FactReports] DROP CONSTRAINT [FK__FactRepor__Statu__4E88ABD4];
 GO
+IF OBJECT_ID(N'[dbo].[FK_Changes_ToReports]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Changes] DROP CONSTRAINT [FK_Changes_ToReports];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Changes_ToUsers]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Changes] DROP CONSTRAINT [FK_Changes_ToUsers];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Changes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Changes];
+GO
 IF OBJECT_ID(N'[dbo].[DimCategories]', 'U') IS NOT NULL
     DROP TABLE [dbo].[DimCategories];
 GO
@@ -83,6 +92,16 @@ CREATE TABLE [dbo].[FactReports] (
 );
 GO
 
+-- Creating table 'Changes'
+CREATE TABLE [dbo].[Changes] (
+    [Id] int  NOT NULL,
+    [UserName] nvarchar(20)  NULL,
+    [ReportID] int  NULL,
+    [Data] nvarchar(max)  NULL,
+    [Time] datetime  NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -109,6 +128,12 @@ GO
 ALTER TABLE [dbo].[FactReports]
 ADD CONSTRAINT [PK_FactReports]
     PRIMARY KEY CLUSTERED ([ReportID] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Changes'
+ALTER TABLE [dbo].[Changes]
+ADD CONSTRAINT [PK_Changes]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- --------------------------------------------------
@@ -141,6 +166,34 @@ ADD CONSTRAINT [FK__FactRepor__Statu__4E88ABD4]
 CREATE INDEX [IX_FK__FactRepor__Statu__4E88ABD4]
 ON [dbo].[FactReports]
     ([StatusID]);
+GO
+
+-- Creating foreign key on [ReportID] in table 'Changes'
+ALTER TABLE [dbo].[Changes]
+ADD CONSTRAINT [FK_Changes_ToReports]
+    FOREIGN KEY ([ReportID])
+    REFERENCES [dbo].[FactReports]
+        ([ReportID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Changes_ToReports'
+CREATE INDEX [IX_FK_Changes_ToReports]
+ON [dbo].[Changes]
+    ([ReportID]);
+GO
+
+-- Creating foreign key on [UserName] in table 'Changes'
+ALTER TABLE [dbo].[Changes]
+ADD CONSTRAINT [FK_Changes_ToUsers]
+    FOREIGN KEY ([UserName])
+    REFERENCES [dbo].[DimUsers]
+        ([UserName])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Changes_ToUsers'
+CREATE INDEX [IX_FK_Changes_ToUsers]
+ON [dbo].[Changes]
+    ([UserName]);
 GO
 
 -- --------------------------------------------------

@@ -222,8 +222,8 @@
                 '<thead><tr><th>Screen Shot</th><th>Description</th><th>Location</th><th>Name</th><th>Phone</th><th>Time Stamp</th></tr></thead><tbody id="tbody">';
             // `d` is the original data object for the row
             for (i in d) {
-                s += ("<tr><td><a href=\"" + "http://localhost:2314/" + d[i].ScreenShot.substring(70) + "\" target=\"_blank\"><img src=\"" +
-                    "http://localhost:2314/" + d[i].ScreenShot.substring(70) + "\" style=\"height:100px;\"></img></a></td><td>" + d[i].Description + "</td><td>" +
+                s += ("<tr><td><a href=\"" + "http://localhost:2314/" + d[i].ScreenShot.substring(d[i].ScreenShot.indexOf("UploadImage")) + "\" target=\"_blank\"><img src=\"" +
+                    "http://localhost:2314/" + d[i].ScreenShot.substring(d[i].ScreenShot.indexOf("UploadImage")) + "\" style=\"height:100px;\"></img></a></td><td>" + d[i].Description + "</td><td>" +
                     d[i].Location + "</td><td>" + d[i].Name + "  " + d[i].LastName + "</td><td>" + d[i].Phone +
                     "</td><td>" + (new Date(Date.parse(d[i].TimeStamp))).toLocaleString() + "</td></tr>");
             }
