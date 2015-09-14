@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <meta charset=utf-8>
-      <title>Full page screen catpure</title>
+      <meta charset="utf-8">
+      <title>Watcher</title>
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="css/bootstrap.min.css">
 
@@ -34,38 +34,38 @@
               <div class="main-login-form">
                   <div class="login-group">
                       <div class="form-group">
-                          <label for="fname" class="sr-only">First Name</label>
+                          <label for="fname" id="lfname" class="sr-only">First Name</label>
                           <input id="fname" name="fname" type="text" class="form-control" placeholder="First Name" value=""/>
                       </div>
                       <div class="form-group">
-                      <label for="lname" class="sr-only">Last Name</label>
+                      <label for="lname" id="llname" class="sr-only">Last Name</label>
                       <input id="lname" name="lname" type="text"  class="form-control" placeholder="Last Name" value=""/>
                   </div>
                       <div class="form-group">
-                          <label for="phone" class="sr-only">Phone</label>
+                          <label for="phone" id="lphone" class="sr-only">Phone</label>
                           <input id="phone" name="phone" type="tel" class="form-control" placeholder="Phone" value=""/>
                       </div>
                       <div class="form-group">
-                          <label for="email" class="sr-only">Email</label>
+                          <label for="email" id="lemail" class="sr-only">Email</label>
                           <input id="email" name="email" type="email" value="" placeholder="Email" class="form-control"/>
                       </div>
                       <div class="form-group">
-                          <label for="location" class="sr-only">Location</label>
+                          <label for="location" id="llocation" class="sr-only">Location</label>
                           <input id="location" name="location" class="form-control" placeholder="Location" type="text" value=""/>
                       </div>
 
                       <div class="form-group">
-                          <label for="desc" class="sr-only">Description</label>
+                          <label for="desc" id="l" class="sr-only">Description</label>
                           <textarea id="desc" name="desc" placeholder="Description" class="form-control"></textarea>                      </div>
                       <div class="form-group login-group-checkbox">
                           <select class="form-control" id="category">
-                              <option id="cc" value="" disabled selected    >Choose Category</option>
-                              <option value="1">Abuse</option>
-                              <option value="3">Shaming</option>
-                              <option value="2">Incitement</option>
-                              <option value="4">Suicide</option>
-                              <option value="5">Pedophile</option>
-                              <option value="6">Terror</option>
+                              <option id="cc" value="" disabled selected>Choose Category</option>
+                              <option id="abuse" value="1">Abuse</option>
+                              <option id="shaming" value="3">Shaming</option>
+                              <option id="incitment" value="2">Incitement</option>
+                              <option id="suicide" value="4">Suicide</option>
+                              <option id="pedophile" value="5">Pedophile</option>
+                              <option id="terror" value="6">Terror</option>
 
                           </select>                   </div>
 
@@ -94,14 +94,13 @@
       version of Chrome.
   </div>
 
-
-
+      <script src="js/jquery.js"></script>
+	  <script src="js/localization.js"></script>
       <!-- JavaScript and HTML must be in separate files for security. -->
       <script src="popup.js"></script>
-      <script src="js/jquery.js"></script>
       <script src="js/jquery-migrate-1.2.1.js"></script>
       <script src="js/bootstrap.min.js"></script>
 
-      <!--<script type="text/javascript" src="js/custom.js"></script>-->
+   <!--   <script type="text/javascript" src="js/custom.js"></script>-->
   </body>
 </html>

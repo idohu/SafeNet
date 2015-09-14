@@ -1,30 +1,37 @@
-// Saves options to chrome.storage
-function save_options() {
-  var aotu = document.getElementById('auto').checked;
-  chrome.storage.sync.set({
-    favoriteColor: color,
-    aotu: aotu
-  }, function() {
-    // Update status to let user know options were saved.
-    var status = document.getElementById('status');
-    status.textContent = 'Options saved.';
-    setTimeout(function() {
-      status.textContent = '';
-    }, 750);
-  });
+var defaultLanguage = "eng";
+function loadOptions() {
+	var lang = localStorage["language"];
+
+	// valid colors are red, blue, green and yellow
+	if (lang == undefined || (lang != "eng" && lang != "heb")) {
+		lang = defaultLanguage;
+	}
+
+	var select = document.getElementById("language");
+	for (var i = 0; i < select.children.length; i++) {
+		var child = select.children[i];
+			if (child.value == lang) {
+			child.selected = "true";
+			break;
+		}
+	}
+	var auto = localStorage["AutoCheck"];
+	if (auto=="true" || auto=="false")
+	document.getElementById("auto").checked = JSON.parse(auto);
 }
 
-// Restores select box and checkbox state using the preferences
-// stored in chrome.storage.
-function restore_options() {
-  // Use default value color = 'red' and likesColor = true.
-  chrome.storage.sync.get({
-    favoriteColor: 'red',
-    aotu: true
-  }, function(items) {
-    document.getElementById('auto').checked = items.aotu;
-  });
+function saveOptions() {
+	var select = document.getElementById("language");
+	var lang = select.children[select.selectedIndex].value;
+	localStorage["language"] = lang;
+	localStorage["AutoCheck"] = document.getElementById("auto").checked;
 }
-document.addEventListener('DOMContentLoaded', restore_options);
-document.getElementById('save').addEventListener('click',
-    save_options);
+
+function eraseOptions() {
+	localStorage.removeItem("language");
+	location.reload();
+}
+
+window.addEventListener('load', loadOptions);
+document.getElementById("save").addEventListener("click",saveOptions);
+document.getElementById("reset").addEventListener("click",eraseOptions);

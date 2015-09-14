@@ -1,0 +1,17 @@
+{
+"firstName": "שם פרטי",
+"lastName": "שם משפחה",
+"phone": "טלפון",
+"Email": "דואל",
+"Location": "כתובת",
+"Description": "תיאור",
+"Category": "בחר קטגוריה",
+"Abuse": "התעללות",
+"Shaming": "שיימינג",
+"Incitment": "הסתה",
+"Suicide": "התאבדות",
+"Pedophile": "פדויפיליה",
+"Terror": "טרור",
+"Invalid": "Full Page Screen Capture cannot be run on this page because of Google Chrome Web Store policies. Try another page on the web!",
+"uhoh": "Uh oh, something went wrong! Try reloading the page and running this again. If the problem persists, please report the error in the Chrome webstore and please include the URL you tried it on and the version of Chrome."
+}

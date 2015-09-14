@@ -452,6 +452,7 @@
     <Content Include="Extension\js\custom.js" />
     <Content Include="Extension\js\jquery-migrate-1.2.1.js" />
     <Content Include="Extension\js\jquery.js" />
+    <Content Include="Extension\js\localization.js" />
     <Content Include="Extension\js\npm.js" />
     <Content Include="Extension\loader.gif" />
     <Content Include="Extension\logo_w.png" />
@@ -588,6 +589,8 @@
     <Content Include="Extension\manifest.json" />
     <Content Include="Extension\README.md" />
     <Content Include="Extension\words.json" />
+    <Content Include="Extension\js\languages\eng.json" />
+    <Content Include="Extension\js\languages\heb.json" />
     <None Include="Properties\PublishProfiles\digi.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
