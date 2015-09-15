@@ -1,26 +1,90 @@
 <!DOCTYPE html>
 <html>
-<head><title>SafeNet Options</title></head>
+<head>
+    <title>Watcher Options</title>
+
+    <meta charset="utf-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+
+    <!-- there are rendering bugs when styles aren't inline... -->
+    <style>
+        .login-form-1 .form-control {
+            color:rgba(47, 69, 72, 0.76)
+        }
+        .login-group{
+            color: #2F4548;
+        }
+        button{
+            color: #2F4548;
+        }
+    </style>
+</head>
 <body>
-<header>
-<h2>SafeNet Options</h2>
-</header>
-<h1>Language</h1>
-    <select id="language">
-        <option value="eng">English</option>
-        <option value="heb">Hebrew</option>
-    </select>
-    <br />
-    
-<label>
-  <input type="checkbox" id="auto">
-  Automated Check
-</label>
- <br />
-<div id="status"></div>
-<button id="save">Save</button>
-    <br />
-    <button id="reset">Restore default</button>
+<br>
+<br>
+
+<div class="row">
+    <div class="col-md-5 col-md-offset-4" style="padding-right: 60px;">
+        <img src="watcher.png" style="width: 80%;">
+
+    </div>
+</div>
+
+<!-- LOGIN FORM -->
+<div class="text-center" style="padding:50px 0">
+    <div class="logo">Options</div>
+    <!-- Main Form -->
+    <div class="login-form-1">
+        <form id="login-form" class="text-left">
+            <div class="login-form-main-message"></div>
+            <div class="main-login-form">
+                <div class="login-group">
+                    <div class="form-group">
+                        <label for="Language" class="">Language</label><br>
+                        <select class="form-control" id="language">
+                            <option value="eng">English</option>
+                            <option value="heb">Hebrew</option>
+                        </select>
+                    </div>
+                    <div class="form-group login-group-checkbox">
+                        <input type="checkbox" id="auto" name="auto">
+                        <label for="auto">Automated Check</label>
+                    </div>
+                    <div class="form-group login-group-checkbox">
+
+                    <button type="submit"  id="save" class="login-button1">Save</button>
+                        <button id="reset">Restore default</button>
+
+                    </div>
+                    </div>
+
+
+            </div>
+            <div class="etc-login-form">
+                <p>Contact Us <a href="#">click here</a></p>
+            </div>
+        </form>
+    </div>
+    <!-- end:Main Form -->
+</div>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/localization.js"></script>
+<!-- JavaScript and HTML must be in separate files for security. -->
+<script src="js/jquery-migrate-1.2.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 
 <script src="options.js"></script>
 </body>
