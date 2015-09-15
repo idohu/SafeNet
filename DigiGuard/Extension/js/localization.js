@@ -1,17 +1,55 @@
 var lang = localStorage["language"];
-if (lang == undefined || (lang != "eng" && lang != "heb")) {
+if (lang == undefined || (lang != "eng" && lang != "heb" && lang!='rus' && lang !='arb')) {
 	var lng=window.navigator.userLanguage || window.navigator.language;
-	if (lng.indexOf("en")>=0)
-		lang = 'eng'
-	else
-	{
-		if (lng =='he-IL')
-			lang='heb'
-		else{
-				lang = defaultLanguage;
+	switch (lng)
+    {
+        case 'en‐US':
+        case 'en‐AU':
+        case 'en-BZ':
+        case 'en‐CA':
+        case 'en‐CB':
+        case 'en‐IE':
+        case 'en‐JM':
+        case 'en‐NZ':
+        case 'en‐PH':
+        case 'en‐ZA':
+        case 'en‐TT':
+        case 'en‐GB':
+        case 'en‐ZW':
+            lang = 'eng';
+            break;
+        case 'he-IL':
+            lang = 'heb';
+            break;
+        case 'ru‐RU':
+            lang='rus';
+            break;
+        case 'ar-DZ':
+        case 'ar-BH':
+        case 'ar-EG':
+        case 'ar-IQ':
+        case 'ar-JO':
+        case 'ar-KW':
+        case 'ar-LB':
+        case 'ar-LY':
+        case 'ar-MA':
+        case 'ar-OM':
+        case 'ar-QA':
+        case 'ar-SA':
+        case 'ar-SY':
+        case 'ar-TN':
+        case 'ar-AE':
+        case 'ar-YE':
+            lang='arb';
+            break;
+        default:
+            lang=defaultLanguage;
+            break;
 
-		}
-	}
+
+    }
+
+
 
 }
 var strings = (function() {
@@ -73,3 +111,6 @@ document.getElementById("pedophile").placeholder = strings.Pedophile;
 document.getElementById("terror").placeholder = strings.Terror;
 document.getElementById("invalid").placeholder = strings.Invalid;
 document.getElementById("uh-oh").placeholder = strings.uh-oh; */
+
+if (localStorage['side']!=undefined)
+    document.getElementById("loginForm").style.direction = localStorage['side'];
