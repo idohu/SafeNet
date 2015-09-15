@@ -1,6 +1,18 @@
 var lang = localStorage["language"];
 if (lang == undefined || (lang != "eng" && lang != "heb")) {
-	lang = defaultLanguage;
+	var lng=window.navigator.userLanguage || window.navigator.language;
+	if (lng.indexOf("en")>=0)
+		lang = 'eng'
+	else
+	{
+		if (lng =='he-IL')
+			lang='heb'
+		else{
+				lang = defaultLanguage;
+
+		}
+	}
+
 }
 var strings = (function() {
         var json = null;	 
