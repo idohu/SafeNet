@@ -134,7 +134,14 @@ namespace DigiGuard
                             };
                             entities.Changes.Add(c);
                         }
-                        entities.SaveChanges();
+                        try
+                        {
+                            entities.SaveChanges();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.Write(ex.Message);
+                        }
                     }
                 }
             }

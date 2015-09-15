@@ -65,7 +65,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" Nullable="true" MaxLength="20" />
     <Property Name="ReportID" Type="int" Nullable="true" />
     <Property Name="Data" Type="nvarchar(max)" Nullable="true" />

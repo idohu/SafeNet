@@ -223,7 +223,8 @@ function openPage() {
 // start doing stuff immediately! - including error cases
 //
 document.getElementById("btn_report").addEventListener("click", function(){
-
+    hide("main");
+    show("loader");
 chrome.tabs.getSelected(null, function(tab) {
 
     if (testURLMatches(tab.url)) {
@@ -260,15 +261,16 @@ function SendData(imgURL) {
     E.location=document.getElementById('location').value;
     var data=JSON.stringify({"url": E.url,"img":imgURL,"dom": E.DOM,"category": E.category,"name": E.fname,"lName": E.lname,
     "phone": E.phone,"email": E.email,"description": E.desc,"location": E.location});
-    var url = "http://localhost:2314/ClientService.asmx";
-    //var url = "http://amirdor.cloudapp.net/SafeNet/ClientService.asmx";
+    //var url = "http://localhost:2314/ClientService.asmx";
+    var url = "http://watcher-g4536865.cloudapp.net/watcher/ClientService.asmx";
     var flag = false;
     var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function(data) {
 			console.log(data)
         if(flag){
             document.getElementById('btn_report').disabled = false;
-
+            hide("loader");
+            show("main");
             window.close();
         }
         flag=true;

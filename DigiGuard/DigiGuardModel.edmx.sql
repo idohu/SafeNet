@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/13/2015 08:38:43
+-- Date Created: 09/15/2015 13:39:04
 -- Generated from EDMX file: Z:\Dropbox (BGU)\Projects\CSharp\SafeNet\DigiGuard\DigiGuardModel.edmx
 -- --------------------------------------------------
 
@@ -34,9 +34,6 @@ GO
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Changes]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Changes];
-GO
 IF OBJECT_ID(N'[dbo].[DimCategories]', 'U') IS NOT NULL
     DROP TABLE [dbo].[DimCategories];
 GO
@@ -48,6 +45,9 @@ IF OBJECT_ID(N'[dbo].[DimUsers]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FactReports]', 'U') IS NOT NULL
     DROP TABLE [dbo].[FactReports];
+GO
+IF OBJECT_ID(N'[dbo].[Changes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Changes];
 GO
 
 -- --------------------------------------------------
@@ -94,7 +94,7 @@ GO
 
 -- Creating table 'Changes'
 CREATE TABLE [dbo].[Changes] (
-    [Id] int  NOT NULL,
+    [Id] int IDENTITY(1,1) NOT NULL,
     [UserName] nvarchar(20)  NULL,
     [ReportID] int  NULL,
     [Data] nvarchar(max)  NULL,

@@ -1,3 +1,4 @@
+var defaultLanguage = "eng";
 var lang = localStorage["language"];
 if (lang == undefined || (lang != "eng" && lang != "heb" && lang!='rus' && lang !='arb')) {
 	var lng=window.navigator.userLanguage || window.navigator.language;

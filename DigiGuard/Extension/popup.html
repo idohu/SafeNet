@@ -29,7 +29,7 @@
 
           </div>
       </div>      <!-- Main Form -->
-      <div class="login-form-1">
+      <div id="main" class="login-form-1">
               <div class="login-form-main-message"></div>
               <div class="main-login-form">
                   <div id="loginForm" class="login-group">
@@ -77,6 +77,17 @@
 </div>
 
 
+      <div id="loader" style="display: none" class="login-form-1">
+          <div class="login-form-main-message"></div>
+          <div class="main-login-form">
+              <div  class="login-group">
+                  <h3 class="logo">Sending</h3>
+                 <img width="70%" src="loader2.gif">
+                  <h3 class="logo"> Please Wait...</h3>
+
+              </div>
+          </div>
+      </div>
 </div>
   <!-- end:Main Form -->
   <div id="invalid" style="display: none">
@@ -93,6 +104,8 @@
       and please include the URL you tried it on and the
       version of Chrome.
   </div>
+
+
 
       <script src="js/jquery.js"></script>
   <script src="js/localization.js"></script>
