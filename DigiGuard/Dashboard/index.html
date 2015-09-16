@@ -167,6 +167,15 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="LinkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body" id="Div2">
+                    <iframe id="iFrameLink"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
     <script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
     <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
@@ -277,6 +286,7 @@
                 reports = JSON.parse(data.d);
                 table = $('#tbl_reports').DataTable({
                     "data": reports,
+                    "dom": 'l<"toolbar">rtip',
                     "lengthMenu": [10, 25, 50, 75, 100],
                     "columns": [
                         {
@@ -285,7 +295,11 @@
                             "data": null,
                             "defaultContent": ''
                         },
-                        { "data": "URL" },
+                        {
+                            "className": 'url-link', "data": "URL", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                $(nTd).html("<a href=\"" + oData.URL + "\" target=\"_blank\">" + oData.URL + "</a>");
+                            }
+                        },
                         { "data": "Amount" },
                         { "className": 'status-control', "data": "status.StatusName" },
                         { "data": "Time", "visible": false }
@@ -315,16 +329,26 @@
                         });
                     }
                 });
+                $("div.toolbar").html('Sort:<select id="orderSelector" onchange="reorder()">' +
+                    '<option value="4" default>Time</option><option value="1">URL</option>' +
+                    '<option value="2">Rank</option><option value="3">Status</option></select>');
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);
 
             }
         });
+
+        function reorder() {
+            var x = document.getElementById("orderSelector").value;
+            table.order([x, 'desc']).draw();
+        }
+
         function LogOut() {
             createCookie("WatcherUser", "", -1);
             window.location = "login.html";
         }
+
         function createCookie(name, value, days) {
             if (days) {
                 var date = new Date();
