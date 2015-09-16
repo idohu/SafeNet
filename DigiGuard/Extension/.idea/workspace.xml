@@ -2,29 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f61237e4-499f-419a-85a4-49468e43197a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/loader2.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../App_Data/DGGuardDBmdf.mdf" afterPath="$PROJECT_DIR$/../App_Data/DGGuardDBmdf.mdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../App_Data/DGGuardDBmdf_log.ldf" afterPath="$PROJECT_DIR$/../App_Data/DGGuardDBmdf_log.ldf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterPath="$PROJECT_DIR$/../obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../obj/Debug/DigiGuard.csprojResolveAssemblyReference.cache" afterPath="$PROJECT_DIR$/../obj/Debug/DigiGuard.csprojResolveAssemblyReference.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bin/DigiGuard.dll" afterPath="$PROJECT_DIR$/../bin/DigiGuard.dll" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../obj/Debug/DigiGuard.dll" afterPath="$PROJECT_DIR$/../obj/Debug/DigiGuard.dll" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bin/DigiGuard.pdb" afterPath="$PROJECT_DIR$/../bin/DigiGuard.pdb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../obj/Debug/DigiGuard.pdb" afterPath="$PROJECT_DIR$/../obj/Debug/DigiGuard.pdb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../DigiGuard.v12.suo" afterPath="$PROJECT_DIR$/../../DigiGuard.v12.suo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../obj/Debug/TempPE/DigiGuardModel.Designer.cs.dll" afterPath="$PROJECT_DIR$/../obj/Debug/TempPE/DigiGuardModel.Designer.cs.dll" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../obj/Debug/TempPE/DigiGuardModel.cs.dll" afterPath="$PROJECT_DIR$/../obj/Debug/TempPE/DigiGuardModel.cs.dll" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../DashboardService.asmx.cs" afterPath="$PROJECT_DIR$/../DashboardService.asmx.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../bin/DigiGuard.dll.config" afterPath="$PROJECT_DIR$/../bin/DigiGuard.dll.config" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../obj/Debug/edmxResourcesToEmbed/DigiGuardModel.csdl" afterPath="$PROJECT_DIR$/../obj/Debug/edmxResourcesToEmbed/DigiGuardModel.csdl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../DigiGuardModel.edmx.sql" afterPath="$PROJECT_DIR$/../DigiGuardModel.edmx.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../DigiGuardModel.edmx" afterPath="$PROJECT_DIR$/../DigiGuardModel.edmx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../obj/Debug/edmxResourcesToEmbed/DigiGuardModel.ssdl" afterPath="$PROJECT_DIR$/../obj/Debug/edmxResourcesToEmbed/DigiGuardModel.ssdl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Web.config" afterPath="$PROJECT_DIR$/../Web.config" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/localization.js" afterPath="$PROJECT_DIR$/js/localization.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/popup.html" afterPath="$PROJECT_DIR$/popup.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/popup.js" afterPath="$PROJECT_DIR$/popup.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/languages/rus.json" afterPath="$PROJECT_DIR$/js/languages/rus.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Extension.crx" afterPath="$PROJECT_DIR$/../Extension.crx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="PinIts.iws" />
@@ -69,7 +47,7 @@
       <file leaf-file-name="popup.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/popup.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7961956" vertical-offset="3186" max-vertical-offset="4290">
+            <state vertical-scroll-proportion="0.7976407" vertical-offset="3186" max-vertical-offset="4290">
               <caret line="271" column="24" selection-start-line="271" selection-start-column="24" selection-end-line="271" selection-end-column="24" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -319,6 +297,9 @@
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="f61237e4-499f-419a-85a4-49468e43197a" name="Default" comment="" />
@@ -326,12 +307,20 @@
       <option name="number" value="Default" />
       <updated>1434033798642</updated>
     </task>
+    <task id="LOCAL-00001" summary="add loader">
+      <created>1442340598494</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1442340598494</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -387,6 +376,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="add loader" />
+    <option name="LAST_COMMIT_MESSAGE" value="add loader" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -727,7 +718,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/popup.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7961956" vertical-offset="3186" max-vertical-offset="4290">
+        <state vertical-scroll-proportion="0.7976407" vertical-offset="3186" max-vertical-offset="4290">
           <caret line="271" column="24" selection-start-line="271" selection-start-column="24" selection-end-line="271" selection-end-column="24" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
