@@ -289,3 +289,5 @@ label:hover:before {
 .form-control>option#cc{
     color: rgba(13, 48, 67, 0.51);
 }
+
+#settingsImg { cursor: pointer; cursor: hand; }

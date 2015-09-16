@@ -279,3 +279,10 @@ function SendData(imgURL) {
 	xhr.setRequestHeader("Content-Type","application/json; charset=utf-8");
 	xhr.send(data);
 }
+
+document.getElementById("settingsImg").addEventListener("click",openOptionsPage);
+function openOptionsPage() {
+    chrome.tabs.create({'url': "/options.html"});
+}
+
+
