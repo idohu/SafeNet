@@ -408,6 +408,8 @@
     <Content Include="Dashboard\scripts\datatables\dataTables.searchHighlight.js" />
     <Content Include="Dashboard\scripts\datatables\jquery.dataTables.js" />
     <Content Include="Dashboard\scripts\datatables\jquery.dataTables.min.js" />
+    <Content Include="Dashboard\css\daterangepicker.css" />
+    <Content Include="Dashboard\scripts\daterangepicker.js" />
     <Content Include="Dashboard\scripts\flot\jquery.flot.js" />
     <Content Include="Dashboard\scripts\flot\jquery.flot.navigate.js" />
     <Content Include="Dashboard\scripts\flot\jquery.flot.pie.js" />
@@ -416,6 +418,8 @@
     <Content Include="Dashboard\scripts\jquery-1.9.1.min.js" />
     <Content Include="Dashboard\scripts\jquery-ui-1.10.1.custom.min.js" />
     <Content Include="Dashboard\scripts\login.js" />
+    <Content Include="Dashboard\scripts\moment.js" />
+    <Content Include="Dashboard\scripts\moment.min.js" />
     <Content Include="Dashboard\table.html" />
     <Content Include="Dashboard\task.html" />
     <Content Include="Dashboard\ui-button-icon.html" />

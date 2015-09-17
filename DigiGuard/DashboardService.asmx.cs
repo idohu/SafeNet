@@ -73,6 +73,22 @@ namespace DigiGuard
 
 
         }
+        [WebMethod]
+        [WebInvoke(Method = "POST",
+        BodyStyle = WebMessageBodyStyle.Wrapped,
+        ResponseFormat = WebMessageFormat.Json)]
+        public string GetAllReports()
+        {
+            using (DGGuardEntities entities = new DGGuardEntities())
+            {
+                var data = entities.FactReports.ToList();
+                JsonSerializerSettings settings = new JsonSerializerSettings
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                };
+                return JsonConvert.SerializeObject(data, settings);
+            }
+        }
 
         [WebMethod]
         [WebInvoke(Method = "POST",
@@ -129,7 +145,7 @@ namespace DigiGuard
                             {
                                 ReportID = data.ReportID,
                                 UserName = user,
-                                Data = "Status Changed From " + oldStat + " To " + entities.DimStatus.First(x=>x.StatusID==data.StatusID+1).StatusName,
+                                Data = "Status Changed From " + oldStat + " To " + entities.DimStatus.First(x => x.StatusID == data.StatusID + 1).StatusName,
                                 Time = DateTime.Now
                             };
                             entities.Changes.Add(c);
@@ -180,10 +196,10 @@ namespace DigiGuard
                 stat += ",\"Categories\":[";
                 foreach (DimCategory category in entities.DimCategories.ToList())
                 {
-                    stat+="{\"Name\":\""+category.Category+"\",\"AmountOfReports\":"+category.FactReports.Count+"},";
+                    stat += "{\"Name\":\"" + category.Category + "\",\"AmountOfReports\":" + category.FactReports.Count + "},";
                 }
-                stat = stat.Substring(0,stat.Length - 1) + "]";
-                return stat+"}";
+                stat = stat.Substring(0, stat.Length - 1) + "]";
+                return stat + "}";
             }
         }
     }
@@ -194,6 +210,6 @@ namespace DigiGuard
         public int Amount = 0;
         public DimStatu status;
         public List<FactReport> Reports = new List<FactReport>();
-        public DateTime Time = new DateTime(1900,1,1);
+        public DateTime Time = new DateTime(1900, 1, 1);
     }
 }
