@@ -101,17 +101,19 @@
                                 <h3>All Reports</h3>
                             </div>
                             <div class="module-body table">
-                                <div class="row well">
+                                <div class="row">
                                     <div class="span2">
                                         <h1>Filtering</h1>
                                     </div>
                                     <div class="span3">
+                                        <h3>Filter By Stauts:</h3>
                                         <input type="checkbox" id="cbPending" checked />Pending<br />
                                         <input type="checkbox" id="cbInProgress" checked />In Progress<br />
                                         <input type="checkbox" id="cbDone" checked />Done
                                     </div>
                                     <div class="span4">
-                                        <div clsas="row">
+                                        <h3>Filter By Date:</h3>
+                                        <div class="row">
                                             <div class="col-md-6">
                                                 <label for="from">From</label>
                                                 <input type="text" id="from" name="from">
@@ -119,17 +121,17 @@
                                                 <input type="text" id="to" name="to">
                                             </div>
                                             <div class="col-md-6">
-                                                <a href="#" class="btn" onclick="setDatePredefined('today');">Today</a>
-                                                <a href="#" class="btn" onclick="setDatePredefined('yesterday');">Yesterday</a>
-                                                <a href="#" class="btn" onclick="setDatePredefined('week');">Last Week</a>
-                                                <a href="#" class="btn" onclick="setDatePredefined('month');">Last Month</a>
+                                                <a href="#" class="btn btn-default" onclick="setDatePredefined('today');">Today</a>
+                                                <a href="#" class="btn btn-default" onclick="setDatePredefined('yesterday');">Yesterday</a>
+                                                <a href="#" class="btn btn-default" onclick="setDatePredefined('week');">Last Week</a>
+                                                <a href="#" class="btn btn-default" onclick="setDatePredefined('month');">Last Month</a>
                                             </div>
                                         </div>
 
 
                                     </div>
                                 </div>
-
+                                <br/>
                                 <table id="tbl_reports" cellpadding="0" cellspacing="0" border="0" class="dataTable table no-footer"
                                     width="90%">
                                     <thead>
@@ -397,7 +399,7 @@
                                 var text = oData.URL;
                                 if (oData.URL.length > 40)
                                     text = oData.URL.substring(0, 38) + "...";
-                                $(nTd).html("<a href=\"" + oData.URL + "\" target=\"_blank\">" + text + "</a>");
+                                $(nTd).html("<a href=\"" + oData.URL + "\" title=\""+oData.URL+"\" target=\"_blank\">" + text + "</a>");
                             }
                         },
                         { "data": "Description" },
