@@ -85,6 +85,7 @@
     <Content Include="Dashboard\bootstrap\img\glyphicons-halflings.png" />
     <Content Include="Dashboard\bootstrap\js\bootstrap.min.js" />
     <Content Include="Dashboard\charts.html" />
+    <Content Include="Dashboard\css\datepicker.css" />
     <Content Include="Dashboard\css\jquery.dataTables.css" />
     <Content Include="Dashboard\css\login.css" />
     <Content Include="Dashboard\css\theme.css" />
@@ -404,6 +405,7 @@
     <Content Include="Dashboard\other-login.html" />
     <Content Include="Dashboard\other-user-listing.html" />
     <Content Include="Dashboard\other-user-profile.html" />
+    <Content Include="Dashboard\scripts\bootstrap-datetimepicker.js" />
     <Content Include="Dashboard\scripts\common.js" />
     <Content Include="Dashboard\scripts\datatables\dataTables.searchHighlight.js" />
     <Content Include="Dashboard\scripts\datatables\jquery.dataTables.js" />
