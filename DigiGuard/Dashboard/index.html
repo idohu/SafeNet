@@ -27,6 +27,11 @@
         tr.shown td.details-control {
             background: url('../resources/details_close.png') no-repeat center center;
         }
+
+        #HelpModal .modal-body {
+            height: 250px;
+            overflow-y: auto;
+        }
     </style>
     <script type="text/javascript">
         if (readCookie("WatcherUser") == null) {
@@ -91,17 +96,17 @@
                         <div class="btn-controls">
                             <div class="btn-box-row row-fluid">
                                 <a href="#" class="btn-box big span4">
-                                    <img src="images/sigma.png" style="height: 90%"></img><b>180</b>
+                                    <img src="images/sigma.png" style="height: 90%"><b>180</b>
                                     <p class="text-muted">
                                         Total Reports
                                     </p>
                                 </a><a href="#" class="btn-box big span4">
-                                    <img src="images/cursor.png" style="height: 130px"></img><b>61%</b>
+                                    <img src="images/cursor.png" style="height: 130px"><b>61%</b>
                                     <p class="text-muted">
                                         Pending Reports
                                     </p>
                                 </a><a href="#" class="btn-box big span4">
-                                    <img src="images/hourglass.png" style="height: 130px"></img><b>5.43 min</b>
+                                    <img src="images/hourglass.png" style="height: 130px"><b>5.43 min</b>
                                     <p class="text-muted">
                                         Average Response Time
                                     </p>
@@ -159,7 +164,57 @@
                     <h4 class="modal-title" id="generalModalTitle">Support</h4>
                 </div>
                 <div class="modal-body" id="generalModalBody">
-                    Here Will Be Support Text!
+                    <ul id="contents">
+                        <li><a href="#addReports">How To Add Reports</a></li>
+                        <li><a href="#changeStatus">How To Change Report Status</a></li>
+                        <li><a href="#rankCalculation">How The Rank Is Calculated</a></li>
+                        <li><a href="#sigma">What The Sigma Stands For?</a></li>
+                        <li><a href="#pointer">What The Pointer Stands For?</a></li>
+                        <li><a href="#sandglass">What The Hourglass Stands For?</a></li>
+                    </ul>
+                    <div id="addReports">
+                        <h3>How are reports added</h3>
+                        Reports are added automatically to the table when a user uses the Watcher Chrome Extension to send it.
+		                <div>
+                            <a href="#contents">Up^</a>
+                        </div>
+                    </div>
+                    <div id="changeStatus">
+                        <h3>How To Change the status of a report</h3>
+                        When you want to change the status of a report simply click on the status symbol and it will be automatically changed to the next level. Avialble levels are: Pending, In Progress, Done and Not Rellevant.
+		                <div>
+                            <a href="#contents">Up^</a>
+                        </div>
+                    </div>
+                    <div id="rankCalculation">
+                        <h3>How The Rank Is Calculated</h3>
+                        The Rank is based on the amount of individual reports recieved for that cluster.<br />
+                        Reports are clustered according to thier URL address.
+		                <div>
+                            <a href="#contents">Up^</a>
+                        </div>
+                    </div>
+                    <div id="sigma">
+                        <h3>What The Sigma Stands For?</h3>
+                        The total number of reports currently in the system (not including reports that have been deemed not relevant).
+		                <div>
+                            <a href="#contents">Up^</a>
+                        </div>
+                    </div>
+                    <div id="pointer">
+                        <h3>What The Pointer Stands For?</h3>
+                        Precentage of pending reports out of all open reports (i.e. not marked as Done or Not Relevant).
+		                <div>
+                            <a href="#contents">Up^</a>
+                        </div>
+                    </div>
+                    <div id="sandglass">
+                        <h3>What The Hourglass Stands For?</h3>
+                        Average amount of time that a report was in pending state.
+		                <div>
+                            <a href="#contents">Up^</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer" id="generalModalFooter">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -264,7 +319,7 @@
                         }
 
 
-                        if (indexes.length>0) {
+                        if (indexes.length > 0) {
                             reports = r;
                             table.clear();
                             table.rows.add(r);
