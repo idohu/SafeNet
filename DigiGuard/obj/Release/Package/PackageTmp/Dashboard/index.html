@@ -33,22 +33,7 @@
             overflow-y: auto;
         }
     </style>
-    <script type="text/javascript">
-        if (readCookie("WatcherUser") == null) {
-            window.location = "login.html";
-        }
-
-        function readCookie(name) {
-            var nameEQ = name + "=";
-            var ca = document.cookie.split(';');
-            for (var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-            }
-            return null;
-        }
-    </script>
+    <script type="text/javascript" src="scripts/Globals.js"></script>
 </head>
 <body>
     <div class="navbar navbar-fixed-top">
@@ -139,6 +124,17 @@
                                     </tbody>
 
                                 </table>
+                                <div id="loader" class="login-form-1">
+                                    <div class="login-form-main-message"></div>
+                                    <div class="main-login-form">
+                                        <div class="login-group">
+                                            <h3 class="logo">Proccessing</h3>
+                                            <img width="40%" src="images/loader2.gif">
+                                            <h3 class="logo">Please Wait...</h3>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!--/.module-->
@@ -225,8 +221,7 @@
     <div class="modal fade" id="LinkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-body" id="Div2">
-                    <iframe id="iFrameLink"></iframe>
+                <div class="modal-body" id="ModalBody">
                 </div>
             </div>
         </div>
@@ -240,7 +235,7 @@
 
     <script>
 
-        var url = "http://localhost:2314/DashboardService.asmx";
+        var url = prefix + server;
         var reports = [];
         var flag = false;
         var table;
@@ -264,21 +259,22 @@
             }
         });
         $('#tbl_reports tbody').on('click', 'td.status-control', function () {
+            $("#ModalBody").html("Status Changed");
+            $("#LinkModal").modal('show');
             $.ajax({
                 type: "POST",
-                url: url + "/changeStatus", //Relative or absolute path to response.php file
+                url: url + "DashboardService.asmx/changeStatus", //Relative or absolute path to response.php file
                 contentType: "application/json; charset=utf-8",
                 data: "{sCluster:" + JSON.stringify(table.row($(this).closest('tr')).data()) + ",user:\"" + readCookie("WatcherUser") + "\"}",
                 dataType: "json",
                 success: function () {
-
+                    
+                    $("#LinkModal").delay(10000).modal('hide');
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(textStatus, errorThrown);
                 }
             });
-            alert('status change');
-
         });
 
         function format(d) {
@@ -286,8 +282,8 @@
                 '<thead><tr><th>Screen Shot</th><th>Description</th><th>Location</th><th>Name</th><th>Phone</th><th>Time Stamp</th></tr></thead><tbody id="tbody">';
             // `d` is the original data object for the row
             for (i in d) {
-                s += ("<tr><td><a href=\"" + "http://localhost:2314/" + d[i].ScreenShot.substring(d[i].ScreenShot.indexOf("UploadImage")) + "\" target=\"_blank\"><img src=\"" +
-                    "http://localhost:2314/" + d[i].ScreenShot.substring(d[i].ScreenShot.indexOf("UploadImage")) + "\" style=\"height:100px;\"></img></a></td><td>" + d[i].Description + "</td><td>" +
+                s += ("<tr><td><a href=\"" + url + d[i].ScreenShot.substring(d[i].ScreenShot.indexOf("UploadImage")) + "\" target=\"_blank\"><img src=\"" +
+                    url + d[i].ScreenShot.substring(d[i].ScreenShot.indexOf("UploadImage")) + "\" style=\"height:100px;\"></img></a></td><td>" + d[i].Description + "</td><td>" +
                     d[i].Location + "</td><td>" + d[i].Name + "  " + d[i].LastName + "</td><td>" + d[i].Phone +
                     "</td><td>" + (new Date(Date.parse(d[i].TimeStamp))).toLocaleString() + "</td></tr>");
             }
@@ -299,7 +295,7 @@
             if (!flag)
                 $.ajax({
                     type: "POST",
-                    url: url + "/GetReports", //Relative or absolute path to response.php file
+                    url: url + "DashboardService.asmx/GetReports", //Relative or absolute path to response.php file
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
                         var r = JSON.parse(data.d);
@@ -310,7 +306,8 @@
                         if (r == null || reports == null)
                             return;
                         for (var i = 0; i < reports.length; ++i) {
-                            if (r[i].URL != reports[i].URL || r[i].Reports.length != reports[i].Reports.length) {
+                            if (r[i].URL != reports[i].URL || r[i].Reports.length != reports[i].Reports.length
+                                || r[i].status.StatusName != reports[i].status.StatusName) {
                                 indexes.push(reports[i].URL);
                             }
                         }
@@ -335,10 +332,11 @@
         var rows = [];
         $.ajax({
             type: "POST",
-            url: url + "/GetReports", //Relative or absolute path to response.php file
+            url: url + "DashboardService.asmx/GetReports", //Relative or absolute path to response.php file
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 reports = JSON.parse(data.d);
+                document.getElementById('loader').style.display = 'none';
                 table = $('#tbl_reports').DataTable({
                     "data": reports,
                     "dom": 'l<"toolbar">rtip',
@@ -352,7 +350,10 @@
                         },
                         {
                             "className": 'url-link', "data": "URL", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                                $(nTd).html("<a href=\"" + oData.URL + "\" target=\"_blank\">" + oData.URL + "</a>");
+                                var text = oData.URL;
+                                if (oData.URL.length > 70)
+                                    text = oData.URL.substring(0, 68) + "...";
+                                $(nTd).html("<a href=\"" + oData.URL + "\" title=\"" + oData.URL + "\" target=\"_blank\">" + text + "</a>");
                             }
                         },
                         { "data": "Amount" },
@@ -361,6 +362,10 @@
                     ],
                     "order": [[4, 'desc']],
                     "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                        var text = aData.URL;
+                        if (aData.URL.length > 70)
+                            text = aData.URL.substring(0, 68) + "...";
+                        $('td', nRow).eq(1)[0].innerHTML ="<a href=\"" + aData.URL + "\" title=\"" + aData.URL + "\" target=\"_blank\">" + text + "</a>";
                         if (aData.Amount >= 5)
                             $('td', nRow).eq(3)[0].innerHTML = "<i class='label label-important'>" + $('td', nRow).eq(3)[0].innerText + "</i>";//.removeClass().addClass('important-record');
                         else
@@ -397,21 +402,6 @@
         function reorder() {
             var x = document.getElementById("orderSelector").value;
             table.order([x, 'desc']).draw();
-        }
-
-        function LogOut() {
-            createCookie("WatcherUser", "", -1);
-            window.location = "login.html";
-        }
-
-        function createCookie(name, value, days) {
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                var expires = "; expires=" + date.toGMTString();
-            }
-            else var expires = "";
-            document.cookie = name + "=" + value + expires + "; path=/";
         }
     </script>
 </body>

@@ -33,24 +33,7 @@
             width: auto;
         }
     </style>
-    <script type="text/javascript">
-        if (readCookie("WatcherUser") == null) {
-            window.location = "login.html";
-        }
-
-        function readCookie(name) {
-            var nameEQ = name + "=";
-            var ca = document.cookie.split(';');
-            for (var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-            }
-            return null;
-        }
-
-    </script>
-
+    <script type="text/javascript" src="scripts/Globals.js"></script>
 </head>
 <body>
     <div class="navbar navbar-fixed-top">
@@ -252,7 +235,7 @@
         }
 
 
-        var url = "http://localhost:2314/DashboardService.asmx";
+        var url = prefix + server;
         var reports = [];
         var flag = false;
         var table;
@@ -277,12 +260,12 @@
             }
         });
         function format(d) {
-            return '<img src="' + d + '"></img>';
+            return '<img src="' + url + d.substring(d.indexOf("UploadImage"))  + '"></img>';
         }
         $('#tbl_reports tbody').on('click', 'td.status-control', function () {
             $.ajax({
                 type: "POST",
-                url: url + "/changeStatus", //Relative or absolute path to response.php file
+                url: url + "DashboardService.asmx/changeStatus", //Relative or absolute path to response.php file
                 contentType: "application/json; charset=utf-8",
                 data: "{sCluster:" + JSON.stringify(table.row($(this).closest('tr')).data()) + ",user:\"" + readCookie("WatcherUser") + "\"}",
                 dataType: "json",
@@ -343,7 +326,7 @@
             if (!flag)
                 $.ajax({
                     type: "POST",
-                    url: url + "/GetAllReports", //Relative or absolute path to response.php file
+                    url: url + "DashboardService.asmx/GetAllReports", //Relative or absolute path to response.php file
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
                         var r = JSON.parse(data.d);
@@ -379,7 +362,7 @@
         var rows = [];
         $.ajax({
             type: "POST",
-            url: url + "/GetAllReports", //Relative or absolute path to response.php file
+            url: url + "DashboardService.asmx/GetAllReports", //Relative or absolute path to response.php file
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 reports = JSON.parse(data.d);
@@ -418,6 +401,10 @@
                     ],
                     "order": [[7, 'desc']],
                     "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                        var text = aData.URL;
+                        if (aData.URL.length > 70)
+                            text = aData.URL.substring(0, 68) + "...";
+                        $('td', nRow).eq(1)[0].innerHTML = "<a href=\"" + aData.URL + "\" title=\"" + aData.URL + "\" target=\"_blank\">" + text + "</a>";
                         if (aData.DimStatu.StatusName == "Pending")
                             $('td', nRow).eq(6)[0].innerHTML = "<i class='label label-important'>" +
                                 $('td', nRow).eq(6)[0].innerText + "</i>";
@@ -460,49 +447,8 @@
             table.order([x, 'desc']).draw();
         }
 
-        $(document).ready(function () {
-
-            $("#timePO").popover({
-                trigger: 'click',
-                html: true, // must have if HTML is contained in popover
-
-                // get the title and conent
-                title: function () {
-                    return $('#po-title').html();
-                },
-                content: function () {
-                    return $('#po-body').html();
-                },
-                //container: 'body',
-                // viewport: "body",
-                placement: 'bottom'
-
-            });
-
-        });
         $('#inputRange').datepicker({
         });
-        $('#timePO').click(function () {
-            if ($('.popover').hasClass('in')) {
-                $('#timePO').popover('hide');
-            } else {
-                $('#timePO').popover('show');
-            }
-        });
-        function LogOut() {
-            createCookie("WatcherUser", "", -1);
-            window.location = "login.html";
-        }
-
-        function createCookie(name, value, days) {
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                var expires = "; expires=" + date.toGMTString();
-            }
-            else var expires = "";
-            document.cookie = name + "=" + value + expires + "; path=/";
-        }
     </script>
 </body>
 </html>

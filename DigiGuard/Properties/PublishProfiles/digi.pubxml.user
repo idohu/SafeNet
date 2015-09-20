@@ -8,13 +8,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
     <LastUsedPlatform>Any CPU</LastUsedPlatform>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAkBzZS9vYjkuTjH6Fnxp+egAAAAACAAAAAAAQZgAAAAEAACAAAAAewNdgERr1z17rnnzuuU4AMzzQOjpqrCP6pMa0Nz7rqQAAAAAOgAAAAAIAACAAAACz+wBGSRytwYcWZbPxSyISGp6XxvsWCNIynqGSyax8uxAAAACHKKLvcapMbvMryIJPKTfHQAAAAD3Z8I1R5A+GGUBzvvCINdv8CXtTOLJjTlDc79vwEqDuiyHwGvoXBWCIoC+6qw+KrqSZAjVTfQrwlHrCafqmgE0=</EncryptedPassword>
   </PropertyGroup>
   <ItemGroup>
     <File Include="App_Data/DGGuardDBmdf.mdf">
-      <publishTime>09/16/2015 15:51:59</publishTime>
+      <publishTime>09/20/2015 22:14:18</publishTime>
     </File>
     <File Include="App_Data/DGGuardDBmdf_log.ldf">
-      <publishTime>09/16/2015 15:51:59</publishTime>
+      <publishTime>09/20/2015 22:14:18</publishTime>
     </File>
     <File Include="AuthenticationService.asmx">
       <publishTime>09/10/2015 17:00:28</publishTime>
@@ -26,7 +27,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/11/2015 22:25:21</publishTime>
     </File>
     <File Include="bin/DigiGuard.dll">
-      <publishTime>09/19/2015 16:23:25</publishTime>
+      <publishTime>09/20/2015 22:14:17</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>06/11/2015 15:23:25</publishTime>
@@ -1127,7 +1128,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/11/2015 22:25:21</publishTime>
     </File>
     <File Include="Dashboard/activity.html">
-      <publishTime>09/19/2015 10:40:11</publishTime>
+      <publishTime>09/20/2015 18:00:31</publishTime>
     </File>
     <File Include="Dashboard/bootstrap/css/bootstrap-responsive.min.css">
       <publishTime>06/24/2013 12:58:16</publishTime>
@@ -1145,7 +1146,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/24/2013 12:58:16</publishTime>
     </File>
     <File Include="Dashboard/charts.html">
-      <publishTime>09/19/2015 13:22:14</publishTime>
+      <publishTime>09/20/2015 17:24:55</publishTime>
     </File>
     <File Include="Dashboard/css/datepicker.css">
       <publishTime>09/18/2015 19:03:14</publishTime>
@@ -2158,6 +2159,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Dashboard/images/jquery-ui/picker.png">
       <publishTime>06/24/2013 12:58:16</publishTime>
     </File>
+    <File Include="Dashboard/images/loader2.gif">
+      <publishTime>09/20/2015 14:55:30</publishTime>
+    </File>
     <File Include="Dashboard/images/logo.png">
       <publishTime>09/10/2015 17:26:02</publishTime>
     </File>
@@ -2174,10 +2178,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/08/2014 03:25:10</publishTime>
     </File>
     <File Include="Dashboard/index.html">
-      <publishTime>09/19/2015 14:32:56</publishTime>
+      <publishTime>09/20/2015 18:10:46</publishTime>
     </File>
     <File Include="Dashboard/login.html">
-      <publishTime>09/13/2015 01:25:40</publishTime>
+      <publishTime>09/20/2015 17:31:03</publishTime>
     </File>
     <File Include="Dashboard/message.html">
       <publishTime>07/13/2014 23:33:08</publishTime>
@@ -2224,6 +2228,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Dashboard/scripts/flot/jquery.flot.time.js">
       <publishTime>08/24/2015 14:15:00</publishTime>
     </File>
+    <File Include="Dashboard/scripts/Globals.js">
+      <publishTime>09/20/2015 20:48:36</publishTime>
+    </File>
     <File Include="Dashboard/scripts/jquery-1.9.1.min.js">
       <publishTime>06/24/2013 12:58:16</publishTime>
     </File>
@@ -2234,7 +2241,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/10/2015 17:50:04</publishTime>
     </File>
     <File Include="Dashboard/scripts/login.js">
-      <publishTime>09/12/2015 11:31:10</publishTime>
+      <publishTime>09/20/2015 17:45:21</publishTime>
     </File>
     <File Include="Dashboard/scripts/moment.js">
       <publishTime>09/17/2015 14:10:28</publishTime>
@@ -2264,7 +2271,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/11/2015 23:49:49</publishTime>
     </File>
     <File Include="DigiGuardModel.edmx.diagram">
-      <publishTime>09/19/2015 16:21:46</publishTime>
+      <publishTime>09/20/2015 21:21:13</publishTime>
     </File>
     <File Include="DigiGuardModel.edmx.sql">
       <publishTime>09/16/2015 15:51:59</publishTime>
@@ -2468,7 +2475,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/12/2015 07:59:59</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/19/2015 16:23:26</publishTime>
+      <publishTime>09/20/2015 22:14:20</publishTime>
     </File>
   </ItemGroup>
 </Project>
