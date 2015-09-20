@@ -446,13 +446,9 @@
     <Content Include="Extension\css\bootstrap.min.css" />
     <Content Include="Extension\css\custom.css" />
     <Content Include="Extension\css\font-awesome.min.css" />
+    <Content Include="Extension\fonts\fontawesome-webfont.svg" />
     <Content Include="Extension\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Extension\icon.png" />
-    <Content Include="Extension\icon128.png" />
-    <Content Include="Extension\icon16.png" />
-    <Content Include="Extension\icon48.png" />
-    <Content Include="Extension\iconCop.jpg" />
-    <Content Include="Extension\iconCop.png" />
     <Content Include="Extension\js\bootstrap.js" />
     <Content Include="Extension\js\bootstrap.min.js" />
     <Content Include="Extension\js\custom.js" />
@@ -460,7 +456,7 @@
     <Content Include="Extension\js\jquery.js" />
     <Content Include="Extension\js\localization.js" />
     <Content Include="Extension\js\npm.js" />
-    <Content Include="Extension\loader.gif" />
+    <Content Include="Extension\loader2.gif" />
     <Content Include="Extension\logo_w.png" />
     <Content Include="Extension\logo_w_e.png" />
     <Content Include="Extension\options.html" />
@@ -468,9 +464,13 @@
     <Content Include="Extension\page.js" />
     <Content Include="Extension\popup.html" />
     <Content Include="Extension\popup.js" />
-    <Content Include="Extension\promo-440-280.png" />
-    <Content Include="Extension\screenshots\active-screenshot.png" />
-    <Content Include="Extension\screenshots\finished-screenshot.png" />
+    <Content Include="Extension\screenshots\english.png" />
+    <Content Include="Extension\screenshots\hebrew.png" />
+    <Content Include="Extension\screenshots\hebrew2.png" />
+    <Content Include="Extension\screenshots\options menu.png" />
+    <Content Include="Extension\screenshots\russian.png" />
+    <Content Include="Extension\Setting.png" />
+    <Content Include="Extension\watcher.png" />
     <Content Include="Extension\words.js" />
     <Content Include="PrioritizedDigiGuard.asmx" />
     <Content Include="Resources\details_close.png" />
@@ -576,8 +576,6 @@
     <Content Include="Dashboard\DataTables-1.10.7\media\images\Sorting icons.psd" />
     <Content Include="Dashboard\DataTables-1.10.7\Readme.md" />
     <Content Include="Extension\.DS_Store" />
-    <Content Include="Extension\archiver.sh" />
-    <Content Include="Extension\CHANGES.md" />
     <Content Include="Extension\.idea\.name" />
     <Content Include="Extension\.idea\PinIts.iml" />
     <Content Include="Extension\css\bootstrap-theme.css.map" />
@@ -586,17 +584,18 @@
     <Content Include="Extension\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Extension\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Extension\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Extension\psds\icon.psd" />
-    <Content Include="Extension\psds\promo-440-280.psd" />
-    <Content Include="Extension\psds\promo.psd" />
-    <Content Include="Extension\psds\sun-rays.psd" />
     <Content Include="Dashboard\scripts\jquery.validate.min.js" />
-    <Content Include="Extension\LICENSE" />
     <Content Include="Extension\manifest.json" />
-    <Content Include="Extension\README.md" />
     <Content Include="Extension\words.json" />
     <Content Include="Extension\js\languages\eng.json" />
     <Content Include="Extension\js\languages\heb.json" />
+    <Content Include="Extension\js\languages\arb.json" />
+    <Content Include="Extension\js\languages\rus.json" />
+    <Content Include="Extension\fonts\fontawesome-webfont.eot" />
+    <Content Include="Extension\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Extension\fonts\fontawesome-webfont.woff" />
+    <Content Include="Extension\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Extension\fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\digi.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -606,6 +605,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Extension\psds\" />
     <Folder Include="UploadImage\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,450 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watcher</title>
+    <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link type="text/css" href="css/theme.css" rel="stylesheet">
+    <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
+    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
+        rel='stylesheet'>
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+       <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                    <i class="icon-reorder shaded"></i></a><a class="brand" href="index.html">
+                        <img style="width: 30%;" src="images/logo_big.png" />
+                    </a>
+                <div class="nav-collapse collapse navbar-inverse-collapse">
+                    <ul class="nav pull-right">
+                        <li><a data-toggle="modal" href="#HelpModal">Support </a></li>
+                        <li class="nav-user dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="images/user.png" class="nav-avatar" />
+                            <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" onclick="LogOut()">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.nav-collapse -->
+            </div>
+        </div>
+        <!-- /navbar-inner -->
+    </div>
+    <!-- /navbar -->
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="span2">
+                   <div class="sidebar">
+                        <ul class="widget widget-menu unstyled">
+                            <li class="active"><a href="index.html"><i class="menu-icon icon-dashboard"></i>Dashboard
+                            </a></li>
+                            <li><a href="activity.html"><i class="menu-icon icon-bullhorn"></i>Reports </a>
+                            </li>
+                            <li><a href="#"><i class="menu-icon icon-inbox"></i>Inbox <b class="label green pull-right">11</b> </a></li>
+                            <li><a href="charts.html"><i class="menu-icon icon-tasks"></i>Admin</a></li>
+                        </ul>
+                    </div>
+                    <!--/.sidebar-->
+                </div>
+                <!--/.span3-->
+                <div class="span10">
+                    <div class="module">
+                        <div class="module-head">
+                            <h4><i class="icon-signal"></i>Distributions</h4>
+                        </div>
+                        <div class="module-body">
+                            <div class="row">
+                                <div class="span4">
+                                    <div id="status-pie-chart"></div>
+                                </div>
+                                <div class="span5">
+                                    <div id="url-pie-chart"></div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="module">
+                        <div class="module-head">
+                            <h4><i class="icon-signal"></i>Hourly Distribution</h4>
+                        </div>
+                        <div class="module-body">
+                            <div id="sales-charts"></div>
+                        </div>
+                    </div>
+                    <div class="module message">
+							<div class="module-head">
+								<h3>Actions history</h3>
+							</div>
+							
+							<div class="module-body table">								
+
+							    <table id="taskTable" class="table table-message">
+							        <thead>
+							            <tr class="heading">
+							                <th class="cell-icon"></th>
+							                <th class="cell-title">Data</th>
+							                <th class="cell-time align-right">Date</th>
+							            </tr>
+							        </thead>
+							        <tbody>
+							            
+							        </tbody>
+							    </table>
+
+
+							</div>
+							<div class="module-foot">
+							</div>
+						</div>
+                    <!--/.content-->
+                </div>
+            <!--/.span9-->
+        </div>
+    </div>
+    <!--/.container-->
+    </div>
+    <!--/.wrapper-->
+    <div class="footer">
+        <div class="container">
+            <b class="copyright">&copy; 2015 Wathcer - Dor & Ido </b>All rights reserved.
+        </div>
+    </div>
+    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="generalModalTitle">Modal</h4>
+                </div>
+                <div class="modal-body" id="generalModalBody">
+                </div>
+                <div class="modal-footer" id="generalModalFooter">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="HelpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="H1">Support</h4>
+                </div>
+                <div class="modal-body" id="Div1">
+                    Here Will Be Support Text!
+                </div>
+                <div class="modal-footer" id="Div2">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+    <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="scripts/flot/jquery.flot.js" type="text/javascript"></script>
+    <script src="scripts/flot/jquery.flot.pie.js" type="text/javascript"></script>
+    <script src="scripts/flot/jquery.flot.navigate.js" type="text/javascript"></script>
+    <script src="scripts/flot/jquery.flot.time.js" type="text/javascript"></script>
+    <script src="scripts/common.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var url = "http://localhost:2314/DashboardService.asmx";
+        $.ajax({
+            type: "POST",
+            url: url + "/GetStatistics", //Relative or absolute path to response.php file
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                var d = JSON.parse(data.d);
+                var data1 = [
+                    { label: "Pending", data: d.Reports.NumberofPending, color: "#48CA3B" },
+                    { label: "In Progress", data: d.Reports.NumberofInProgress, color: "#00BCE1" },
+                    { label: "Done", data: d.Reports.NumberofDone, color: "#4D3A7D" }
+                ];
+
+                var placeholder = $('#status-pie-chart').css({ 'width': '100%', 'min-height': '150px' });
+                $.plot(placeholder, data1, {
+                    series: {
+                        pie: {
+                            show: true
+                        },
+                        highlight: {
+                            opacity: 0.25
+                        }
+                    },
+                    grid: {
+                        hoverable: true,
+                        clickable: true
+                    }
+                });
+                var $tooltip = $("<div class='tooltip top in' style='display:none;'><div class='tooltip-inner'></div></div>").appendTo('body');
+                placeholder.data('tooltip', $tooltip);
+                var previousPoint = null;
+                placeholder.on('plothover', function (event, pos, item) {
+                    if (item) {
+                        if (previousPoint != item.seriesIndex) {
+                            previousPoint = item.seriesIndex;
+                            var tip = item.series.label + " - " + item.datapoint[0].toFixed(2) + "% (" + item.datapoint[1][0][1]+" reports)";
+                            $(this).data('tooltip').show().children(0).text(tip);
+                        }
+                        $(this).data('tooltip').css({ top: pos.pageY + 10, left: pos.pageX + 10 });
+                    } else {
+                        $(this).data('tooltip').hide();
+                        previousPoint = null;
+                    }
+
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: url + "/GetUserActions", //Relative or absolute path to response.php file
+            contentType: "application/json; charset=utf-8",
+            data: "{user:\"" + readCookie("WatcherUser") + "\"}",
+            dataType: "json",
+            success: function (data) {
+                var d1 = [];
+                var d = JSON.parse(data.d);
+                var j = "";
+                for (var i = 0; i < d.length; i++) {
+                    j += '<tr class="task"><td class="cell-icon"><i class="icon-checker high"></i></td>' +
+                        '<td class="cell-title"><div>'+d[i].Data+'</div></td>' +
+                        '<td class="cell-time align-right">' + (new Date(Date.parse(d[i].Time))).toLocaleString() + '</td></tr>';
+                }
+                $("#taskTable tbody")[0].innerHTML = j;
+                
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+        var d1 = [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [10, 0]
+                , [11, 0], [12, 0], [13, 0], [14, 0], [15, 0], [16, 0], [17, 0], [18, 0], [19, 0], [20, 0],
+                [21, 0], [22, 0], [23, 0]];
+        $.ajax({
+            type: "POST",
+            url: url + "/GetAllReports", //Relative or absolute path to response.php file
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                var d = JSON.parse(data.d);
+                var urls = [];
+                for (var i = 0; i < d.length; i++) {
+                    var x = new Date(Date.parse(d[i].TimeStamp)).getHours();
+                    urls.push(d[i].URL.substring(0, d[i].URL.indexOf("/",8)));
+                    d1[x][1]++;
+                }
+                var counts = {};
+                for (var i = 0; i < urls.length; i++) {
+                    counts[urls[i]] = 1 + (counts[urls[i]] || 0);
+                }
+                var data1 = [];
+                for (x in counts) {
+                    data1.push({ label: x, data: counts[x]});
+                }
+
+                var placeholder = $('#url-pie-chart').css({ 'width': '100%', 'min-height': '150px' });
+                $.plot(placeholder, data1, {
+                    series: {
+                        pie: {
+                            show: true
+                        },
+                        highlight: {
+                            opacity: 0.25
+                        }
+                    },
+                    grid: {
+                        hoverable: true,
+                        clickable: true
+                    },
+                    legend: {
+                        legend: {
+                            noColumns: 4,
+                            position: 'w'
+                        }
+                    }
+                });
+                var $tooltip = $("<div class='tooltip top in' style='display:none;'><div class='tooltip-inner'></div></div>").appendTo('body');
+                placeholder.data('tooltip', $tooltip);
+                var previousPoint = null;
+                placeholder.on('plothover', function (event, pos, item) {
+                    if (item) {
+                        if (previousPoint != item.seriesIndex) {
+                            previousPoint = item.seriesIndex;
+                            var tip = item.series.label + " - " + item.datapoint[0].toFixed(2) + "% (" + item.datapoint[1][0][1] + " reports)";
+                            $(this).data('tooltip').show().children(0).text(tip);
+                        }
+                        $(this).data('tooltip').css({ top: pos.pageY + 10, left: pos.pageX + 10 });
+                    } else {
+                        $(this).data('tooltip').hide();
+                        previousPoint = null;
+                    }
+
+                });
+                var sales_charts = $('#sales-charts').css({ 'width': '100%', 'height': '220px' });
+                $.plot("#sales-charts", [
+                    { label: "Reports", data: d1, clickable: true }
+                ], {
+                    hoverable: true,
+                    shadowSize: 0,
+                    series: {
+                        lines: { show: true },
+                        points: { show: true },
+                        highlight: {
+                            opacity: 0.25
+                        }
+                    },
+                    xaxis: {
+                        ticks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+                        tickFormatter: function formatter(val, axis) {
+                            return val + ":00";
+                        }
+                    },
+                    yaxis: {
+                        panRange: [0, 6],
+                        tickDecimals: 0
+                    },
+                    zoom: {
+                        interactive: false
+                    },
+                    pan: {
+                        interactive: true
+                    },
+                    grid: {
+                        backgroundColor: { colors: ["#fff", "#fff"] },
+                        borderWidth: 1,
+                        borderColor: '#555',
+                        clickable: true,
+                        hoverable: true
+                    }
+                });
+
+                var $tooltip = $("<div class='tooltip top in' style='display:none;'><div class='tooltip-inner'></div></div>").appendTo('body');
+                sales_charts.data('tooltip', $tooltip);
+                var previousPoint = null;
+
+                sales_charts.on('plothover', function (event, pos, item) {
+                    if (item) {
+                        if (previousPoint != item.seriesIndex) {
+                            previousPoint = item.seriesIndex;
+                            var tip = d1[item.dataIndex][1]+" reports";
+                            $(this).data('tooltip').show().children(0).text(tip);
+                        }
+                        $(this).data('tooltip').css({ top: pos.pageY + 10, left: pos.pageX + 10 });
+                    } else {
+                        $(this).data('tooltip').hide();
+                        previousPoint = null;
+                    }
+
+                });
+
+                $("#sales-charts").bind("plotclick", function (event, pos, item) {
+
+                    if (item) {
+                        //highlight(item.series, item.datapoint);
+                        $('#generalModalTitle').html('System Administrator Login');
+                        var j = JSON.stringify(item);
+                        $('#generalModalBody').html(j);
+                        $('#Modal').modal('show');
+                    }
+                });
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+        
+        //var sales_charts = $('#sales-charts').css({ 'width': '100%', 'height': '220px' });
+        //$.plot("#sales-charts", [
+        //    { label: "Mood", data: d1, clickable: true },
+        //    { label: "Blue", data: d2 },
+        //    { label: "Red", data: d3 }
+        //], {
+        //    hoverable: true,
+        //    shadowSize: 0,
+        //    series: {
+        //        lines: { show: true },
+        //        points: { show: true },
+        //        highlight: {
+        //            opacity: 0.25
+        //        }
+        //    },
+        //    xaxis: {
+
+        //        mode: "time",
+        //        panRange: [null, d1[d1.length - 1][0]],
+        //        timeformat: "%H:%M:%S"
+        //    },
+        //    yaxis: {
+        //        panRange: [0, 6],
+        //        tickDecimals: 0
+        //    },
+        //    zoom: {
+        //        interactive: false
+        //    },
+        //    pan: {
+        //        interactive: true
+        //    },
+        //    grid: {
+        //        backgroundColor: { colors: ["#fff", "#fff"] },
+        //        borderWidth: 1,
+        //        borderColor: '#555',
+        //        clickable: true,
+        //        hoverable: true
+        //    }
+        //});
+
+        //var $tooltip = $("<div class='tooltip top in' style='display:none;'><div class='tooltip-inner'></div></div>").appendTo('body');
+        //sales_charts.data('tooltip', $tooltip);
+        //var previousPoint = null;
+
+        //sales_charts.on('plothover', function (event, pos, item) {
+        //    if (item) {
+        //        if (previousPoint != item.seriesIndex) {
+        //            previousPoint = item.seriesIndex;
+        //            var tip = item.series['label'] + " : " + new Date(item.datapoint[1]);
+        //            $(this).data('tooltip').show().children(0).text(tip);
+        //        }
+        //        $(this).data('tooltip').css({ top: pos.pageY + 10, left: pos.pageX + 10 });
+        //    } else {
+        //        $(this).data('tooltip').hide();
+        //        previousPoint = null;
+        //    }
+
+        //});
+
+        //$("#sales-charts").bind("plotclick", function (event, pos, item) {
+
+        //    if (item) {
+        //        //highlight(item.series, item.datapoint);
+        //        $('#generalModalTitle').html('System Administrator Login');
+        //        var j = JSON.stringify(item);
+        //        $('#generalModalBody').html(j);
+        //        $('#Modal').modal('show');
+        //    }
+        //});
+        function readCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+    </script>
+</body>
+</html>

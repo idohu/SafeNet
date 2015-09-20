@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <title>Watcher</title>
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+      <!-- Latest compiled and minified JavaScript -->
+      <link rel="stylesheet" href="css/font-awesome.min.css">
+      <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+      <link rel="stylesheet" type="text/css" href="css/custom.css">
+
+      <!-- there are rendering bugs when styles aren't inline... -->
+
+  </head>
+  <body>
+
+  <div id="wrap" class="text-center" style="padding:10px 0;width: 300px;">
+      <div id="loading">
+      <div style="display: none" class="loader"><div class="bar" id="bar"></div></div>
+      <div class="row">
+          <div class="col-sm-2 text-center">
+              <img src="logo_w.png" style="width: 50%;">
+
+          </div>
+      </div>      <!-- Main Form -->
+      <div id="main" class="login-form-1">
+              <div class="login-form-main-message"></div>
+              <div class="main-login-form">
+                  <div id="loginForm" class="login-group">
+                      <div class="form-group">
+                          <label for="fname" id="lfname" class="sr-only">First Name</label>
+                          <input id="fname" name="fname" type="text" class="form-control" placeholder="First Name" value=""/>
+                      </div>
+                      <div class="form-group">
+                      <label for="lname" id="llname" class="sr-only">Last Name</label>
+                      <input id="lname" name="lname" type="text"  class="form-control" placeholder="Last Name" value=""/>
+                  </div>
+                      <div class="form-group">
+                          <label for="phone" id="lphone" class="sr-only">Phone</label>
+                          <input id="phone" name="phone" type="tel" class="form-control" placeholder="Phone" value=""/>
+                      </div>
+                      <div class="form-group">
+                          <label for="email" id="lemail" class="sr-only">Email</label>
+                          <input id="email" name="email" type="email" value="" placeholder="Email" class="form-control"/>
+                      </div>
+                      <div class="form-group">
+                          <label for="location" id="llocation" class="sr-only">Location</label>
+                          <input id="location" name="location" class="form-control" placeholder="Location" type="text" value=""/>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="desc" id="l" class="sr-only">Description</label>
+                          <textarea id="desc" name="desc" placeholder="Description" class="form-control"></textarea>                      </div>
+                      <div class="form-group login-group-checkbox">
+                          <select class="form-control" id="category">
+                              <option id="cc" value="" disabled selected>Choose Category</option>
+                              <option id="abuse" value="1">Abuse</option>
+                              <option id="shaming" value="3">Shaming</option>
+                              <option id="incitment" value="2">Incitement</option>
+                              <option id="suicide" value="4">Suicide</option>
+                              <option id="pedophile" value="5">Pedophile</option>
+                              <option id="terror" value="6">Terror</option>
+
+                          </select>                   </div>
+
+                  </div>
+                  <button type="submit" id="btn_report" class="login-button"><span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span></button>
+
+                  </div>
+              </div>
+</div>
+
+
+      <div id="loader" style="display: none" class="login-form-1">
+          <div class="login-form-main-message"></div>
+          <div class="main-login-form">
+              <div  class="login-group">
+                  <h3 class="logo">Sending</h3>
+                 <img width="70%" src="loader2.gif">
+                  <h3 class="logo"> Please Wait...</h3>
+
+              </div>
+          </div>
+      </div>
+</div>
+  <!-- end:Main Form -->
+  <div id="invalid" style="display: none">
+
+      Full Page Screen Capture cannot be run on this page
+      because of Google Chrome Web Store policies. Try
+      another page on the web!
+  </div>
+  <div id="uh-oh" style="display: none">
+      Uh oh, something went wrong! Try reloading the page
+      and running this again. If the problem persists,
+      please report the error in the
+      <a href="https://chrome.google.com/webstore/support/fdpohaocaechififmbbbbbknoalclacl?hl=en&gl=US#bug">Chrome webstore</a>
+      and please include the URL you tried it on and the
+      version of Chrome.
+  </div>
+  <div align="center" class="center-block"><ul class="list-inline">
+      <li>
+          <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+      </li>
+      <li>
+          <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+      </li>
+      <li>
+          <a href="mailto:amirdor@gmail.com" class="btn-social btn-outline" data-toggle="tooltip" title="Email Us"><i class="fa fa-fw fa-envelope"></i></a>
+      </li>
+      <li>
+          <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+      </li>
+      <li>
+          <a href="#" id="settingsImg" class="btn-social btn-outline" data-toggle="tooltip" title="Settings"><i class="fa fa-fw fa-cogs"></i></a>
+      </li>
+  </ul>  </div>
+
+
+
+      <script src="js/jquery.js"></script>
+  <script src="js/localization.js"></script>
+      <!-- JavaScript and HTML must be in separate files for security. -->
+      <script src="popup.js"></script>
+      <script src="js/jquery-migrate-1.2.1.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+
+
+
+
+   <!--   <script type="text/javascript" src="js/custom.js"></script>-->
+  </body>
+</html>
