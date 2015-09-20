@@ -70,8 +70,6 @@ namespace DigiGuard
                 };
                 return JsonConvert.SerializeObject(list, settings);
             }
-
-
         }
         [WebMethod]
         [WebInvoke(Method = "POST",

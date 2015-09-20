@@ -139,6 +139,17 @@
                                     </tbody>
 
                                 </table>
+                                <div id="loader" class="login-form-1">
+                                    <div class="login-form-main-message"></div>
+                                    <div class="main-login-form">
+                                        <div class="login-group">
+                                            <h3 class="logo">Proccessing</h3>
+                                            <img width="40%" src="images/loader2.gif">
+                                            <h3 class="logo">Please Wait...</h3>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!--/.module-->
@@ -339,6 +350,7 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 reports = JSON.parse(data.d);
+                document.getElementById('loader').style.display = 'none';
                 table = $('#tbl_reports').DataTable({
                     "data": reports,
                     "dom": 'l<"toolbar">rtip',
@@ -352,7 +364,10 @@
                         },
                         {
                             "className": 'url-link', "data": "URL", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                                $(nTd).html("<a href=\"" + oData.URL + "\" target=\"_blank\">" + oData.URL + "</a>");
+                                var text = oData.URL;
+                                if (oData.URL.length > 70)
+                                    text = oData.URL.substring(0, 68) + "...";
+                                $(nTd).html("<a href=\"" + oData.URL + "\" title=\"" + oData.URL + "\" target=\"_blank\">" + text + "</a>");
                             }
                         },
                         { "data": "Amount" },
