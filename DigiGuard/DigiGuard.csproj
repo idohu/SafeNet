@@ -394,6 +394,7 @@
     <Content Include="Dashboard\images\icons\css\font-awesome.css" />
     <Content Include="Dashboard\images\img.jpg" />
     <Content Include="Dashboard\images\jquery-ui\picker.png" />
+    <Content Include="Dashboard\images\loader2.gif" />
     <Content Include="Dashboard\images\logo.png" />
     <Content Include="Dashboard\images\logo_big.png" />
     <Content Include="Dashboard\images\sigma.png" />
@@ -417,6 +418,7 @@
     <Content Include="Dashboard\scripts\flot\jquery.flot.pie.js" />
     <Content Include="Dashboard\scripts\flot\jquery.flot.resize.js" />
     <Content Include="Dashboard\scripts\flot\jquery.flot.time.js" />
+    <Content Include="Dashboard\scripts\Globals.js" />
     <Content Include="Dashboard\scripts\jquery-1.9.1.min.js" />
     <Content Include="Dashboard\scripts\jquery-ui-1.10.1.custom.min.js" />
     <Content Include="Dashboard\scripts\login.js" />

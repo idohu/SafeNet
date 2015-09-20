@@ -11,7 +11,7 @@
         'msg-error': 'Wrong login credentials!',
         'useAJAX': true,
     };
-    var url = "http://localhost:2314/AuthenticationService.asmx";
+    var url = prefix + server;
     // Login Form
     //----------------------------------------------
     // Validation
@@ -151,7 +151,7 @@
             o.password = $form[0][1].value;
             $.ajax({
                 type: "POST",
-                url: url + "/AuthenticateUser", //Relative or absolute path to response.php file
+                url: url + "AuthenticationService.asmx/AuthenticateUser", //Relative or absolute path to response.php file
                 data: JSON.stringify(o),
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
@@ -171,14 +171,3 @@
     }
 
 })(jQuery);
-
-
-function createCookie(name, value, days) {
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        var expires = "; expires=" + date.toGMTString();
-    }
-    else var expires = "";
-    document.cookie = name + "=" + value + expires + "; path=/";
-}
