@@ -81,12 +81,12 @@
                         <div class="btn-controls">
                             <div class="btn-box-row row-fluid">
                                 <a href="#" class="btn-box big span4">
-                                    <img src="images/sigma.png" style="height: 90%"><b>180</b>
+                                    <img src="images/sigma.png" style="height: 90%"><b id="sumReports">180</b>
                                     <p class="text-muted">
                                         Total Reports
                                     </p>
                                 </a><a href="#" class="btn-box big span4">
-                                    <img src="images/cursor.png" style="height: 130px"><b>61%</b>
+                                    <img src="images/cursor.png" style="height: 130px"><b id="repostP">61%</b>
                                     <p class="text-muted">
                                         Pending Reports
                                     </p>
@@ -124,7 +124,7 @@
                                     </tbody>
 
                                 </table>
-                                <div id="loader" class="login-form-1">
+                                <div id="loader" align="center" class="login-form-1">
                                     <div class="login-form-main-message"></div>
                                     <div class="main-login-form">
                                         <div class="login-group">
@@ -268,7 +268,7 @@
                 data: "{sCluster:" + JSON.stringify(table.row($(this).closest('tr')).data()) + ",user:\"" + readCookie("WatcherUser") + "\"}",
                 dataType: "json",
                 success: function () {
-                    
+
                     $("#LinkModal").delay(10000).modal('hide');
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -323,6 +323,7 @@
                             table.rows().invalidate().draw();
 
                         }
+
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         console.log(textStatus, errorThrown);
@@ -365,7 +366,7 @@
                         var text = aData.URL;
                         if (aData.URL.length > 70)
                             text = aData.URL.substring(0, 68) + "...";
-                        $('td', nRow).eq(1)[0].innerHTML ="<a href=\"" + aData.URL + "\" title=\"" + aData.URL + "\" target=\"_blank\">" + text + "</a>";
+                        $('td', nRow).eq(1)[0].innerHTML = "<a href=\"" + aData.URL + "\" title=\"" + aData.URL + "\" target=\"_blank\">" + text + "</a>";
                         if (aData.Amount >= 5)
                             $('td', nRow).eq(3)[0].innerHTML = "<i class='label label-important'>" + $('td', nRow).eq(3)[0].innerText + "</i>";//.removeClass().addClass('important-record');
                         else
@@ -398,7 +399,21 @@
 
             }
         });
+        $.ajax({
+            type: "POST",
+            url: url + "DashboardService.asmx/GetStatistics", //Relative or absolute path to response.php file
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                var d = JSON.parse(data.d);
+                var total = d.Reports.NumberofPending + d.Reports.NumberofInProgress + d.Reports.NumberofDone;
+                document.getElementById("sumReports").innerText = total;
 
+                document.getElementById("repostP").innerText = (d.Reports.NumberofPending/total).toFixed(0) + "%";
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
         function reorder() {
             var x = document.getElementById("orderSelector").value;
             table.order([x, 'desc']).draw();
