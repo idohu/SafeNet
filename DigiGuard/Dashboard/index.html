@@ -408,7 +408,7 @@
                 var total = d.Reports.NumberofPending + d.Reports.NumberofInProgress + d.Reports.NumberofDone;
                 document.getElementById("sumReports").innerText = total;
 
-                document.getElementById("repostP").innerText = (d.Reports.NumberofPending/total).toFixed(0) + "%";
+                document.getElementById("repostP").innerText = (d.Reports.NumberofPending/total*100).toFixed(0) + "%";
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);

@@ -46,30 +46,44 @@ namespace DigiGuard
         //Clustered by URL
         public string GetReports()
         {
-            using (DGGuardEntities entities = new DGGuardEntities())
+            List<Cluster> list = new List<Cluster>();
+            try
             {
-                var data = entities.FactReports.Where(x => x.StatusID != 2).ToList();
-                List<Cluster> list = new List<Cluster>();
-                foreach (FactReport report in data)
+                using (DGGuardEntities entities = new DGGuardEntities())
                 {
-                    Cluster c = list.FirstOrDefault(x => String.Equals(x.URL, report.URL));
-                    if (c == null)
+                    var data = entities.FactReports.Where(x => x.StatusID != 2).ToList();
+                    foreach (FactReport report in data)
                     {
-                        c = new Cluster() { URL = report.URL, status = report.DimStatu };
-                        if (report.TimeStamp > c.Time)
-                            c.Time = report.TimeStamp;
-                        list.Add(c);
-                    }
-                    c.Amount++;
-                    c.Reports.Add(report);
+                        Cluster c = list.FirstOrDefault(x => String.Equals(x.URL, report.URL));
+                        if (c == null)
+                        {
+                            c = new Cluster
+                            {
+                                URL = report.URL,
+                                status = new DimStatuPrivate(report.DimStatu.StatusID, report.DimStatu.StatusName)
+                            };
+                            if (report.TimeStamp > c.Time)
+                                c.Time = report.TimeStamp;
+                            list.Add(c);
+                        }
+                        c.Amount++;
+                        c.Reports.Add(new FaceReportPrivate(report));
 
+                    }
+                  
                 }
                 JsonSerializerSettings settings = new JsonSerializerSettings
                 {
                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                 };
                 return JsonConvert.SerializeObject(list, settings);
+
             }
+            catch (Exception e)
+            {
+                return "";
+            }
+
         }
         [WebMethod]
         [WebInvoke(Method = "POST",
@@ -80,11 +94,12 @@ namespace DigiGuard
             using (DGGuardEntities entities = new DGGuardEntities())
             {
                 var data = entities.FactReports.ToList();
+                List<FaceReportPrivate> list = data.Select(factReport => new FaceReportPrivate(factReport)).ToList();
                 JsonSerializerSettings settings = new JsonSerializerSettings
                 {
                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                 };
-                return JsonConvert.SerializeObject(data, settings);
+                return JsonConvert.SerializeObject(list, settings);
             }
         }
 
@@ -130,7 +145,7 @@ namespace DigiGuard
         {
             using (DGGuardEntities entities = new DGGuardEntities())
             {
-                foreach (FactReport report in sCluster.Reports)
+                foreach (FaceReportPrivate report in sCluster.Reports)
                 {
                     var data = entities.FactReports.FirstOrDefault(x => x.ReportID == report.ReportID);
                     if (data != null)
@@ -206,8 +221,75 @@ namespace DigiGuard
     {
         public string URL;
         public int Amount = 0;
-        public DimStatu status;
-        public List<FactReport> Reports = new List<FactReport>();
+        public DimStatuPrivate status;
+        public List<FaceReportPrivate> Reports = new List<FaceReportPrivate>();
         public DateTime Time = new DateTime(1900, 1, 1);
     }
+
+
+
+    public class FaceReportPrivate
+    {
+        public int ReportID { get; set; }
+        public System.DateTime TimeStamp { get; set; }
+        public string URL { get; set; }
+        public string ScreenShot { get; set; }
+        public Nullable<int> CategoryID { get; set; }
+        public string Location { get; set; }
+        public string Name { get; set; }
+        public string LastName { get; set; }
+        public string Phone { get; set; }
+        public string Description { get; set; }
+        public string Email { get; set; }
+        public Nullable<int> StatusID { get; set; }
+
+        public FaceReportPrivate(int Reportid, DateTime Time, string url, Nullable<int> catId, string location, string name,string lname,
+            string phone, string desc, string email, Nullable<int> statusID)
+        {
+            ReportID = Reportid;
+            TimeStamp = Time;
+            URL = url;
+            CategoryID = catId;
+            Location = location;
+            Name = name;
+            LastName = lname;
+            Phone = phone;
+            Description = desc;
+            Email = email;
+            StatusID = statusID;
+           
+
+        }
+
+        public FaceReportPrivate(FactReport report)
+        {
+            ReportID = report.ReportID;
+            TimeStamp = report.TimeStamp;
+            URL = report.URL;
+            CategoryID = report.CategoryID;
+            Location = report.Location;
+            Name = report.Name;
+            LastName = report.LastName;
+            Phone = report.Phone;
+            Description = report.Description;
+            Email = report.Description;
+            StatusID = report.StatusID;
+            ScreenShot = report.ScreenShot;
+
+        }
+
+    }
+
+    public class DimStatuPrivate
+    {
+        public int StatusID { get; set; }
+        public string StatusName { get; set; }
+
+        public DimStatuPrivate(int statID, string statname)
+        {
+            StatusID = statID;
+            StatusName = statname;
+        }
+    }
 }
+
