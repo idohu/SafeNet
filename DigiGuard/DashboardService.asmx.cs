@@ -70,7 +70,7 @@ namespace DigiGuard
                         c.Reports.Add(new FaceReportPrivate(report));
 
                     }
-                  
+
                 }
                 JsonSerializerSettings settings = new JsonSerializerSettings
                 {
@@ -158,7 +158,8 @@ namespace DigiGuard
                             {
                                 ReportID = data.ReportID,
                                 UserName = user,
-                                Data = "Status Changed From " + oldStat + " To " + entities.DimStatus.First(x => x.StatusID == data.StatusID + 1).StatusName,
+                                Data = "Status Changed From " + oldStat + " To " +
+                                entities.DimStatus.First(x => x.StatusID == data.StatusID + 1).StatusName,
                                 Time = DateTime.Now
                             };
                             entities.Changes.Add(c);
@@ -209,7 +210,8 @@ namespace DigiGuard
                 stat += ",\"Categories\":[";
                 foreach (DimCategory category in entities.DimCategories.ToList())
                 {
-                    stat += "{\"Name\":\"" + category.Category + "\",\"AmountOfReports\":" + category.FactReports.Count + "},";
+                    stat += "{\"Name\":\"" + category.Category +
+                        "\",\"AmountOfReports\":" + category.FactReports.Count + "},";
                 }
                 stat = stat.Substring(0, stat.Length - 1) + "]";
                 return stat + "}";
@@ -243,8 +245,8 @@ namespace DigiGuard
         public string Email { get; set; }
         public Nullable<int> StatusID { get; set; }
 
-        public FaceReportPrivate(int Reportid, DateTime Time, string url, Nullable<int> catId, string location, string name,string lname,
-            string phone, string desc, string email, Nullable<int> statusID)
+        public FaceReportPrivate(int Reportid, DateTime Time, string url, Nullable<int> catId, string location,
+            string name, string lname, string phone, string desc, string email, Nullable<int> statusID)
         {
             ReportID = Reportid;
             TimeStamp = Time;
@@ -257,7 +259,7 @@ namespace DigiGuard
             Description = desc;
             Email = email;
             StatusID = statusID;
-           
+
 
         }
 

@@ -10,20 +10,12 @@
 namespace DigiGuard
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class DimUser
+    public enum LogType : int
     {
-        public DimUser()
-        {
-            this.Changes = new HashSet<Change>();
-        }
-    
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string Salt { get; set; }
-        public string Permisssions { get; set; }
-    
-        public virtual ICollection<Change> Changes { get; set; }
+        Info = 0,
+        Error = 1,
+        Debug = 2,
+        Trace = 3
     }
 }

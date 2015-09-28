@@ -11,6 +11,7 @@
           <EntitySet Name="DimStatus" EntityType="DGGuardDBmdfModel.Store.DimStatus" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DimUsers" EntityType="DGGuardDBmdfModel.Store.DimUsers" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="FactReports" EntityType="DGGuardDBmdfModel.Store.FactReports" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Log" EntityType="DGGuardDBmdfModel.Store.Log" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK__FactRepor__Categ__4D94879B" Association="DGGuardDBmdfModel.Store.FK__FactRepor__Categ__4D94879B">
             <End Role="DimCategories" EntitySet="DimCategories" />
             <End Role="FactReports" EntitySet="FactReports" />
@@ -58,6 +59,8 @@
           </Key>
           <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="20" />
           <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Salt" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="Permisssions" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="FactReports">
           <Key>
@@ -75,6 +78,15 @@
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="StatusID" Type="int" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TimeStamp" Type="datetime" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Data" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK__FactRepor__Categ__4D94879B">
           <End Role="DimCategories" Type="DGGuardDBmdfModel.Store.DimCategories" Multiplicity="0..1" />
@@ -150,6 +162,7 @@
             <End Role="DimUser" EntitySet="DimUsers" />
             <End Role="Change" EntitySet="Changes" />
           </AssociationSet>
+          <EntitySet Name="Logs" EntityType="DGGuardDBmdfModel.Log" />
         </EntityContainer>
         <EntityType Name="DimCategory">
           <Key>
@@ -174,6 +187,8 @@
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Changes" Relationship="DGGuardDBmdfModel.FK_Changes_ToUsers" FromRole="DimUser" ToRole="Change" />
+          <Property Type="String" Name="Salt" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Permisssions" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="FactReport">
           <Key>
@@ -255,6 +270,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="DateTime" Name="TimeStamp" Precision="3" />
+          <Property Type="DGGuardDBmdfModel.LogType" Name="Type" />
+          <Property Type="String" Name="Data" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EnumType Name="LogType">
+          <Member Name="Info" />
+          <Member Name="Error" />
+          <Member Name="Debug" />
+          <Member Name="Trace" />
+        </EnumType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -280,7 +310,9 @@
     <EntitySetMapping Name="DimUsers">
       <EntityTypeMapping TypeName="IsTypeOf(DGGuardDBmdfModel.DimUser)">
         <MappingFragment StoreEntitySet="DimUsers">
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Permisssions" ColumnName="Permisssions" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -314,6 +346,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="DGGuardDBmdfModel.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

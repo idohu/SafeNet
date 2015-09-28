@@ -12,18 +12,11 @@ namespace DigiGuard
     using System;
     using System.Collections.Generic;
     
-    public partial class DimUser
+    public partial class Log
     {
-        public DimUser()
-        {
-            this.Changes = new HashSet<Change>();
-        }
-    
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string Salt { get; set; }
-        public string Permisssions { get; set; }
-    
-        public virtual ICollection<Change> Changes { get; set; }
+        public int Id { get; set; }
+        public Nullable<System.DateTime> TimeStamp { get; set; }
+        public Nullable<LogType> Type { get; set; }
+        public string Data { get; set; }
     }
 }

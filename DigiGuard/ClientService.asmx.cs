@@ -33,24 +33,27 @@ namespace DigiGuard
             string name = "", string lName = "", string phone = "", string email = "",
             string description = "", string location = "")
         {
-            using (DGGuardEntities entities = new DGGuardEntities())
+            try
             {
-                genPath = Server.MapPath("/UploadImage/");;
-                string fileName = (DateTime.Now.ToString("yyyy-MM-dd_HHmmss") + ".png").Replace(" ", "");
-                try
+                using (DGGuardEntities entities = new DGGuardEntities())
                 {
-                    byte[] data = Convert.FromBase64String(img);
-                    var fs =
-                        new BinaryWriter(new FileStream(Path.Combine(genPath,fileName), FileMode.Append,
-                            FileAccess.Write));
-                    fs.Write(data);
-                    fs.Close();
-                }
-                catch (Exception ex)
-                {
-
-                }
-                FactReport f = new FactReport
+                    genPath = Server.MapPath("/UploadImage/");
+                    ;
+                    string fileName = (DateTime.Now.ToString("yyyy-MM-dd_HHmmss") + ".png").Replace(" ", "");
+                    try
+                    {
+                        byte[] data = Convert.FromBase64String(img);
+                        var fs =
+                            new BinaryWriter(new FileStream(Path.Combine(genPath, fileName), FileMode.Append,
+                                FileAccess.Write));
+                        fs.Write(data);
+                        fs.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.GetInstance.Log(LogType.Error, "Unable to save Image: " + ex.Message);
+                    }
+                    FactReport f = new FactReport
                     {
                         URL = url,
                         TimeStamp = DateTime.Now,
@@ -61,13 +64,19 @@ namespace DigiGuard
                         Email = email,
                         Phone = phone,
                         ScreenShot = genPath + fileName,
-                        DimCategory = entities.DimCategories.FirstOrDefault(x=>x.CategoryId==category),
-                        DimStatu = entities.DimStatus.FirstOrDefault(x=>x.StatusID == 0)
+                        DimCategory = entities.DimCategories.FirstOrDefault(x => x.CategoryId == category),
+                        DimStatu = entities.DimStatus.FirstOrDefault(x => x.StatusID == 0)
                     };
-                entities.FactReports.Add(f);
-                entities.SaveChanges();
+                    entities.FactReports.Add(f);
+                    entities.SaveChanges();
+                }
+                return "Success";
             }
-            return "Success";
+            catch (Exception ex)
+            {
+                Logger.GetInstance.Log(LogType.Error, "PostReport Failed: "+ ex.Message);
+                return "fail";
+            }
         }
 
         [WebMethod]
