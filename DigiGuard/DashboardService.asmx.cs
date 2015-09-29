@@ -81,6 +81,7 @@ namespace DigiGuard
             }
             catch (Exception e)
             {
+                Logger.GetInstance.Log(LogType.Error, "GetRerpots Failed: " + e.Message);
                 return "";
             }
 
@@ -91,15 +92,23 @@ namespace DigiGuard
         ResponseFormat = WebMessageFormat.Json)]
         public string GetAllReports()
         {
-            using (DGGuardEntities entities = new DGGuardEntities())
+            try
             {
-                var data = entities.FactReports.ToList();
-                List<FaceReportPrivate> list = data.Select(factReport => new FaceReportPrivate(factReport)).ToList();
-                JsonSerializerSettings settings = new JsonSerializerSettings
+                using (DGGuardEntities entities = new DGGuardEntities())
                 {
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                };
-                return JsonConvert.SerializeObject(list, settings);
+                    var data = entities.FactReports.ToList();
+                    List<FaceReportPrivate> list = data.Select(factReport => new FaceReportPrivate(factReport)).ToList();
+                    JsonSerializerSettings settings = new JsonSerializerSettings
+                    {
+                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                    };
+                    return JsonConvert.SerializeObject(list, settings);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.GetInstance.Log(LogType.Error, "GetAllReports Failed: " + ex.Message);
+                return JsonConvert.SerializeObject(false);
             }
         }
 

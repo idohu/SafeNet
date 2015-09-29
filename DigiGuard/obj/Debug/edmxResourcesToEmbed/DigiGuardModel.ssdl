@@ -6,6 +6,7 @@
     <EntitySet Name="DimStatus" EntityType="DGGuardDBmdfModel.Store.DimStatus" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="DimUsers" EntityType="DGGuardDBmdfModel.Store.DimUsers" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="FactReports" EntityType="DGGuardDBmdfModel.Store.FactReports" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Log" EntityType="DGGuardDBmdfModel.Store.Log" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK__FactRepor__Categ__4D94879B" Association="DGGuardDBmdfModel.Store.FK__FactRepor__Categ__4D94879B">
       <End Role="DimCategories" EntitySet="DimCategories" />
       <End Role="FactReports" EntitySet="FactReports" />
@@ -52,7 +53,9 @@
       <PropertyRef Name="UserName" />
     </Key>
     <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="20" />
-    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Salt" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Permisssions" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="FactReports">
     <Key>
@@ -70,6 +73,15 @@
     <Property Name="Description" Type="nvarchar(max)" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
     <Property Name="StatusID" Type="int" />
+  </EntityType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="TimeStamp" Type="datetime" />
+    <Property Name="Type" Type="int" />
+    <Property Name="Data" Type="nvarchar(max)" />
   </EntityType>
   <Association Name="FK__FactRepor__Categ__4D94879B">
     <End Role="DimCategories" Type="DGGuardDBmdfModel.Store.DimCategories" Multiplicity="0..1" />

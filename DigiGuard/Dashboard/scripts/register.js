@@ -157,8 +157,7 @@
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     if (JSON.parse(data.d)) {
-                        createCookie("WatcherUser", o.username, 365);
-                        window.location = "index.html";
+                        form_success($form);
                     }
                     form_failed($form);
                 },

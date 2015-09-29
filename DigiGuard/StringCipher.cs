@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Web;
 
 namespace DigiGuard
@@ -42,19 +43,16 @@ namespace DigiGuard
         /// Validates a password given a hash of the correct one.
         /// </summary>
         /// <param name="password">The password to check.</param>
-        /// <param name="correctHash">A hash of the correct password.</param>
+        /// <param name="hash">A hash of the correct password.</param>
+        /// <param name="salt">The salt used to hash the original password</param>
         /// <returns>True if the password is correct. False otherwise.</returns>
-        public static bool ValidatePassword(string password, string correctHash)
+        public static bool ValidatePassword(string password, string hash, string salt)
         {
             // Extract the parameters from the hash
-            char[] delimiter = { ':' };
-            string[] split = correctHash.Split(delimiter);
-            int iterations = Int32.Parse(split[IterationIndex]);
-            byte[] salt = Convert.FromBase64String(split[SaltIndex]);
-            byte[] hash = Convert.FromBase64String(split[Pbkdf2Index]);
-
-            byte[] testHash = PBKDF2(password, salt, iterations, hash.Length);
-            return SlowEquals(hash, testHash);
+            byte[] saltBytes = Convert.FromBase64String(salt);
+            byte[] hashBytes = Convert.FromBase64String(hash);
+            byte[] testHash = PBKDF2(password, saltBytes, Pbkdf2Iterations, HashByteSize);
+            return SlowEquals(hashBytes, testHash);
         }
 
         /// <summary>

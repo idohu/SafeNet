@@ -22,6 +22,7 @@
       <End Role="DimUser" EntitySet="DimUsers" />
       <End Role="Change" EntitySet="Changes" />
     </AssociationSet>
+    <EntitySet Name="Logs" EntityType="DGGuardDBmdfModel.Log" />
   </EntityContainer>
   <EntityType Name="DimCategory">
     <Key>
@@ -44,8 +45,10 @@
       <PropertyRef Name="UserName" />
     </Key>
     <Property Name="UserName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-    <Property Name="Password" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Changes" Relationship="DGGuardDBmdfModel.FK_Changes_ToUsers" FromRole="DimUser" ToRole="Change" />
+    <Property Type="String" Name="Salt" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Permisssions" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="FactReport">
     <Key>
@@ -127,4 +130,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="DateTime" Name="TimeStamp" Precision="3" />
+    <Property Type="DGGuardDBmdfModel.LogType" Name="Type" />
+    <Property Type="String" Name="Data" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EnumType Name="LogType">
+    <Member Name="Info" />
+    <Member Name="Error" />
+    <Member Name="Debug" />
+    <Member Name="Trace" />
+  </EnumType>
 </Schema>

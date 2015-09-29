@@ -32,15 +32,18 @@ namespace DigiGuard
             {
                 using (DGGuardEntities entities = new DGGuardEntities())
                 {
-                    var data = entities.DimUsers.FirstOrDefault(x => x.UserName == username && x.Password == password);
+                    var data = entities.DimUsers.FirstOrDefault(x => x.UserName == username);
                     if (data != null)
-                        return JsonConvert.SerializeObject(true);
+                    {
+                        return
+                            JsonConvert.SerializeObject(StringCipher.ValidatePassword(password, data.Password, data.Salt));
+                    }
                     return JsonConvert.SerializeObject(false);
                 }
             }
             catch (Exception ex)
             {
-                Logger.GetInstance.Log(LogType.Error, "Authentication Failed: "+ ex.Message);
+                Logger.GetInstance.Log(LogType.Error, "Authentication Failed: " + ex.Message);
                 return JsonConvert.SerializeObject(false);
             }
         }
@@ -56,7 +59,7 @@ namespace DigiGuard
                 using (DGGuardEntities entities = new DGGuardEntities())
                 {
                     var data = entities.DimUsers.FirstOrDefault(x => x.UserName == username);
-                        //check for exisiting username
+                    //check for exisiting username
                     if (data != null)
                         return JsonConvert.SerializeObject(false);
                     string s = StringCipher.CreateHash(password);
@@ -75,7 +78,7 @@ namespace DigiGuard
             }
             catch (Exception ex)
             {
-                Logger.GetInstance.Log(LogType.Error, "Registration Failed: "+ ex.Message);
+                Logger.GetInstance.Log(LogType.Error, "Registration Failed: " + ex.Message);
                 return JsonConvert.SerializeObject(false);
             }
         }

@@ -58,8 +58,8 @@
             <PropertyRef Name="UserName" />
           </Key>
           <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="20" />
-          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="10" />
-          <Property Name="Salt" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Salt" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Permisssions" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="FactReports">
@@ -185,9 +185,9 @@
             <PropertyRef Name="UserName" />
           </Key>
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Changes" Relationship="DGGuardDBmdfModel.FK_Changes_ToUsers" FromRole="DimUser" ToRole="Change" />
-          <Property Type="String" Name="Salt" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Salt" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Permisssions" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="FactReport">

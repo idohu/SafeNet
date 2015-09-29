@@ -20,6 +20,8 @@
     <EntitySetMapping Name="DimUsers">
       <EntityTypeMapping TypeName="IsTypeOf(DGGuardDBmdfModel.DimUser)">
         <MappingFragment StoreEntitySet="DimUsers">
+          <ScalarProperty Name="Permisssions" ColumnName="Permisssions" />
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>
@@ -51,6 +53,16 @@
           <ScalarProperty Name="ReportID" ColumnName="ReportID" />
           <ScalarProperty Name="Data" ColumnName="Data" />
           <ScalarProperty Name="Time" ColumnName="Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logs">
+      <EntityTypeMapping TypeName="DGGuardDBmdfModel.Log">
+        <MappingFragment StoreEntitySet="Log">
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
