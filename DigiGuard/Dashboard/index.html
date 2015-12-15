@@ -261,17 +261,24 @@
         $('#tbl_reports tbody').on('click', 'td.status-control', function () {
             $("#ModalBody").html("Status Changed");
             $("#LinkModal").modal('show');
+            var ids = [];
+            var data = table.row($(this).closest('tr')).data();
+            for (var i = 0; i < data.Reports.length; i++) {
+                ids.push(data.Reports[i].ReportID);
+            }
             $.ajax({
                 type: "POST",
                 url: url + "DashboardService.asmx/changeStatus", //Relative or absolute path to response.php file
                 contentType: "application/json; charset=utf-8",
-                data: "{sCluster:" + JSON.stringify(table.row($(this).closest('tr')).data()) + ",user:\"" + readCookie("WatcherUser") + "\"}",
+                data: "{\"sCluster\": "+ JSON.stringify(ids)+", \"user\": \""+readCookie("WatcherUser") +"\"}",
                 dataType: "json",
                 success: function () {
-
-                    $("#LinkModal").delay(10000).modal('hide');
+                    
+                    $("#LinkModal").delay(5000).modal('hide');
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
+                    $("#ModalBody").html("An Erorr Has Occured");
+                    $("#LinkModal").delay(10000).modal('hide');
                     console.log(textStatus, errorThrown);
                 }
             });

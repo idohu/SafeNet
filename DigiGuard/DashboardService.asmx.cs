@@ -150,13 +150,13 @@ namespace DigiGuard
         [WebInvoke(Method = "POST",
             BodyStyle = WebMessageBodyStyle.Wrapped,
             ResponseFormat = WebMessageFormat.Json)]
-        public void changeStatus(Cluster sCluster, string user)
+        public void changeStatus(List<int> sCluster, string user)
         {
             using (DGGuardEntities entities = new DGGuardEntities())
             {
-                foreach (FaceReportPrivate report in sCluster.Reports)
+                foreach (int reportID in sCluster)
                 {
-                    var data = entities.FactReports.FirstOrDefault(x => x.ReportID == report.ReportID);
+                    var data = entities.FactReports.FirstOrDefault(x => x.ReportID == reportID);
                     if (data != null)
                     {
                         if (data.StatusID < entities.DimStatus.Max(x => x.StatusID))
@@ -168,7 +168,7 @@ namespace DigiGuard
                                 ReportID = data.ReportID,
                                 UserName = user,
                                 Data = "Status Changed From " + oldStat + " To " +
-                                entities.DimStatus.First(x => x.StatusID == data.StatusID + 1).StatusName,
+                                entities.DimStatus.First(x => x.StatusID == data.StatusID).StatusName,
                                 Time = DateTime.Now
                             };
                             entities.Changes.Add(c);
@@ -245,17 +245,17 @@ namespace DigiGuard
         public System.DateTime TimeStamp { get; set; }
         public string URL { get; set; }
         public string ScreenShot { get; set; }
-        public Nullable<int> CategoryID { get; set; }
+        public int? CategoryID { get; set; }
         public string Location { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Phone { get; set; }
         public string Description { get; set; }
         public string Email { get; set; }
-        public Nullable<int> StatusID { get; set; }
+        public int? StatusID { get; set; }
 
-        public FaceReportPrivate(int Reportid, DateTime Time, string url, Nullable<int> catId, string location,
-            string name, string lname, string phone, string desc, string email, Nullable<int> statusID)
+        public FaceReportPrivate(int Reportid, DateTime Time, string url, int? catId, string location,
+            string name, string lname, string phone, string desc, string email, int? statusID)
         {
             ReportID = Reportid;
             TimeStamp = Time;
@@ -296,10 +296,15 @@ namespace DigiGuard
         public int StatusID { get; set; }
         public string StatusName { get; set; }
 
-        public DimStatuPrivate(int statID, string statname)
+        public DimStatuPrivate()
         {
-            StatusID = statID;
-            StatusName = statname;
+            StatusID = 0;
+            StatusName = "Pending";
+        }
+        public DimStatuPrivate(int statusID, string statusname)
+        {
+            StatusID = statusID;
+            StatusName = statusname;
         }
     }
 }
