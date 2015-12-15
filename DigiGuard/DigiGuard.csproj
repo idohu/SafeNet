@@ -69,6 +69,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\CreateDBScript.sql" />
     <Content Include="AuthenticationService.asmx" />
     <Content Include="App_Data\DGGuardDBmdf.mdf" />
     <Content Include="App_Data\DGGuardDBmdf_log.ldf">
@@ -85,6 +86,10 @@
     <Content Include="Dashboard\bootstrap\img\glyphicons-halflings.png" />
     <Content Include="Dashboard\bootstrap\js\bootstrap.min.js" />
     <Content Include="Dashboard\charts.html" />
+    <Content Include="Dashboard\images\chrome.png" />
+    <Content Include="Dashboard\images\Firefox-logo.png" />
+    <Content Include="Dashboard\images\Microsoft_Edge_logo.png" />
+    <Content Include="Dashboard\images\Opera_logo.jpg" />
     <Content Include="Dashboard\registration.html" />
     <Content Include="Dashboard\css\datepicker.css" />
     <Content Include="Dashboard\css\jquery.dataTables.css" />
@@ -608,6 +613,7 @@
     <Content Include="Extension\fonts\fontawesome-webfont.woff" />
     <Content Include="Extension\fonts\fontawesome-webfont.woff2" />
     <Content Include="Extension\fonts\FontAwesome.otf" />
+    <Content Include="Extension.crx" />
     <None Include="Properties\PublishProfiles\digi.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
