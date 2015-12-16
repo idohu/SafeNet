@@ -615,6 +615,7 @@
     <Content Include="Extension\fonts\FontAwesome.otf" />
     <Content Include="Extension.crx" />
     <None Include="Properties\PublishProfiles\digi.pubxml" />
+    <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

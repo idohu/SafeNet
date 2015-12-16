@@ -1,10 +1,10 @@
 ﻿// VARIABLES
 var prefix = "http://";
-var server = "localhost:2314/";//"watcher-g4536865.cloudapp.net/";
+var server = "watcher-m852y043.cloudapp.net/";//"localhost:2314/";//"watcher-g4536865.cloudapp.net/";//"localhost:2314/";//
 
 // Functions
 if (readCookie("WatcherUser") == null) {
-    if (window.location.pathname != "/Dashboard/login.html")
+    if (window.location.pathname.indexOf("/login.html")==-1)
         window.location = "login.html";
 }
 
