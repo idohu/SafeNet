@@ -14,10 +14,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/15/2015 12:24:05</publishTime>
     </File>
     <File Include="App_Data/DGGuardDBmdf.mdf">
-      <publishTime>12/15/2015 12:28:31</publishTime>
+      <publishTime>12/16/2015 23:41:15</publishTime>
     </File>
     <File Include="App_Data/DGGuardDBmdf_log.ldf">
-      <publishTime>12/15/2015 12:28:31</publishTime>
+      <publishTime>12/16/2015 23:41:15</publishTime>
     </File>
     <File Include="AuthenticationService.asmx">
       <publishTime>09/10/2015 17:00:28</publishTime>
@@ -29,7 +29,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/11/2015 22:25:21</publishTime>
     </File>
     <File Include="bin/DigiGuard.dll">
-      <publishTime>12/16/2015 11:20:26</publishTime>
+      <publishTime>12/17/2015 00:37:25</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>06/11/2015 15:23:25</publishTime>
@@ -47,7 +47,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/11/2015 22:25:21</publishTime>
     </File>
     <File Include="Dashboard/activity.html">
-      <publishTime>09/22/2015 13:57:56</publishTime>
+      <publishTime>12/17/2015 00:37:01</publishTime>
     </File>
     <File Include="Dashboard/bootstrap/css/bootstrap-responsive.min.css">
       <publishTime>06/24/2013 12:58:16</publishTime>
@@ -1109,10 +1109,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/08/2014 03:25:10</publishTime>
     </File>
     <File Include="Dashboard/index.html">
-      <publishTime>12/14/2015 22:12:25</publishTime>
+      <publishTime>12/16/2015 23:48:30</publishTime>
     </File>
     <File Include="Dashboard/login.html">
-      <publishTime>12/15/2015 13:39:08</publishTime>
+      <publishTime>12/16/2015 15:41:23</publishTime>
     </File>
     <File Include="Dashboard/message.html">
       <publishTime>07/13/2014 23:33:08</publishTime>
@@ -1163,7 +1163,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2015 14:15:00</publishTime>
     </File>
     <File Include="Dashboard/scripts/Globals.js">
-      <publishTime>12/16/2015 10:39:47</publishTime>
+      <publishTime>12/16/2015 23:47:40</publishTime>
     </File>
     <File Include="Dashboard/scripts/jquery-1.9.1.min.js">
       <publishTime>06/24/2013 12:58:16</publishTime>
@@ -1175,7 +1175,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/10/2015 17:50:04</publishTime>
     </File>
     <File Include="Dashboard/scripts/login.js">
-      <publishTime>09/20/2015 17:45:21</publishTime>
+      <publishTime>12/16/2015 23:46:32</publishTime>
     </File>
     <File Include="Dashboard/scripts/moment.js">
       <publishTime>09/17/2015 14:10:28</publishTime>
@@ -1217,7 +1217,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/11/2015 23:49:49</publishTime>
     </File>
     <File Include="Extension.crx">
-      <publishTime>09/16/2015 15:51:59</publishTime>
+      <publishTime>12/16/2015 23:54:26</publishTime>
     </File>
     <File Include="Extension/.DS_Store">
       <publishTime>06/12/2015 08:52:22</publishTime>
@@ -1226,181 +1226,181 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/11/2015 04:29:38</publishTime>
     </File>
     <File Include="Extension/.idea/encodings.xml">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/.idea/misc.xml">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/.idea/modules.xml">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/.idea/PinIts.iml">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/.idea/scopes/scope_settings.xml">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/.idea/vcs.xml">
-      <publishTime>09/16/2015 15:51:59</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/.idea/workspace.xml">
-      <publishTime>09/17/2015 00:57:54</publishTime>
+      <publishTime>11/06/2015 09:00:48</publishTime>
     </File>
     <File Include="Extension/background.html">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/background.js">
-      <publishTime>09/16/2015 15:51:59</publishTime>
+      <publishTime>12/16/2015 23:38:04</publishTime>
     </File>
     <File Include="Extension/content.js">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>12/16/2015 16:05:15</publishTime>
     </File>
     <File Include="Extension/css/bootstrap-theme.css">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/css/bootstrap-theme.css.map">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/css/bootstrap-theme.min.css">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/css/bootstrap.css">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/css/bootstrap.css.map">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/css/bootstrap.min.css">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/css/custom.css">
-      <publishTime>09/17/2015 00:57:54</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/css/font-awesome.min.css">
-      <publishTime>09/01/2015 13:10:36</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/fonts/fontawesome-webfont.eot">
-      <publishTime>09/17/2015 00:57:54</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/fonts/fontawesome-webfont.svg">
-      <publishTime>09/17/2015 00:57:54</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/fonts/fontawesome-webfont.ttf">
-      <publishTime>09/17/2015 00:57:54</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/fonts/fontawesome-webfont.woff">
-      <publishTime>09/17/2015 00:57:54</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/fonts/fontawesome-webfont.woff2">
-      <publishTime>09/17/2015 00:57:54</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/fonts/FontAwesome.otf">
-      <publishTime>09/17/2015 00:57:54</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/fonts/glyphicons-halflings-regular.eot">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/fonts/glyphicons-halflings-regular.svg">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/fonts/glyphicons-halflings-regular.ttf">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/fonts/glyphicons-halflings-regular.woff">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/fonts/glyphicons-halflings-regular.woff2">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/icon.png">
-      <publishTime>09/11/2015 06:02:02</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/js/bootstrap.js">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/js/bootstrap.min.js">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/js/custom.js">
-      <publishTime>09/11/2015 06:09:08</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/js/jquery-migrate-1.2.1.js">
-      <publishTime>09/11/2015 06:32:58</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/js/jquery.js">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/js/languages/arb.json">
-      <publishTime>09/16/2015 15:51:59</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/js/languages/eng.json">
-      <publishTime>09/14/2015 17:37:13</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/js/languages/heb.json">
-      <publishTime>09/14/2015 17:46:47</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/js/languages/rus.json">
-      <publishTime>09/16/2015 15:51:59</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/js/localization.js">
-      <publishTime>09/16/2015 15:51:59</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/js/npm.js">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/loader2.gif">
-      <publishTime>09/16/2015 15:51:59</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/logo_w.png">
-      <publishTime>09/11/2015 06:04:22</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/logo_w_e.png">
-      <publishTime>09/11/2015 05:59:22</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/manifest.json">
-      <publishTime>09/14/2015 16:44:06</publishTime>
+      <publishTime>12/16/2015 23:37:39</publishTime>
     </File>
     <File Include="Extension/options.html">
-      <publishTime>09/16/2015 15:51:59</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/options.js">
-      <publishTime>09/16/2015 15:51:59</publishTime>
+      <publishTime>12/16/2015 16:14:19</publishTime>
     </File>
     <File Include="Extension/page.js">
-      <publishTime>09/12/2015 17:25:17</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/popup.html">
-      <publishTime>09/17/2015 00:57:54</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/popup.js">
-      <publishTime>12/15/2015 12:07:41</publishTime>
+      <publishTime>12/16/2015 23:28:18</publishTime>
     </File>
     <File Include="Extension/screenshots/english.png">
-      <publishTime>09/16/2015 15:51:59</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/screenshots/hebrew.png">
-      <publishTime>09/16/2015 15:51:59</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/screenshots/hebrew2.png">
-      <publishTime>09/16/2015 15:51:59</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/screenshots/options menu.png">
-      <publishTime>09/16/2015 15:51:59</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/screenshots/russian.png">
-      <publishTime>09/16/2015 15:51:59</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/Setting.png">
-      <publishTime>09/17/2015 00:57:54</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/watcher.png">
-      <publishTime>09/16/2015 15:51:59</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/words.js">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="Extension/words.json">
-      <publishTime>09/11/2015 04:29:38</publishTime>
+      <publishTime>09/20/2015 13:43:54</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>06/11/2015 15:23:27</publishTime>
@@ -1415,7 +1415,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/12/2015 07:59:59</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/16/2015 11:20:28</publishTime>
+      <publishTime>12/17/2015 00:37:27</publishTime>
     </File>
   </ItemGroup>
 </Project>

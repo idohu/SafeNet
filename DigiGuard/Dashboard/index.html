@@ -328,7 +328,21 @@
                             table.clear();
                             table.rows.add(r);
                             table.rows().invalidate().draw();
+                            $.ajax({
+                                type: "POST",
+                                url: url + "DashboardService.asmx/GetStatistics", //Relative or absolute path to response.php file
+                                contentType: "application/json; charset=utf-8",
+                                success: function (data) {
+                                    var d = JSON.parse(data.d);
+                                    var total = d.Reports.NumberofPending + d.Reports.NumberofInProgress + d.Reports.NumberofDone;
+                                    document.getElementById("sumReports").innerText = total;
 
+                                    document.getElementById("repostP").innerText = (d.Reports.NumberofPending / total * 100).toFixed(0) + "%";
+                                },
+                                error: function (jqXHR, textStatus, errorThrown) {
+                                    console.log(textStatus, errorThrown);
+                                }
+                            });
                         }
 
                     },

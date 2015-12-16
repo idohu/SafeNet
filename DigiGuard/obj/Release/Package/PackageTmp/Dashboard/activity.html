@@ -411,6 +411,8 @@
                             $('td', nRow).eq(6)[0].innerHTML = "<i class='label label-warning'>In Progress</i>";
                         if (aData.StatusID == 2)
                             $('td', nRow).eq(6)[0].innerHTML = "<i class='label label-success'>Done</i>";
+                        if (aData.StatusID == 3)
+                            $('td', nRow).eq(6)[0].innerHTML = "<i class='label label-info'>Not Relevant</i>";
                         if (indexes.indexOf(aData.URL) > -1) {
                             rows.push(nRow);
                         }

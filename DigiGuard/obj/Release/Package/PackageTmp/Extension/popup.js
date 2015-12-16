@@ -3,21 +3,21 @@
 //
 // console object for debugging
 //
-var E={};
-var log = (function() {
+var E = {};
+var log = (function () {
     var parElt = document.getElementById('wrap'),
         logElt = document.createElement('div');
     logElt.id = 'log';
     logElt.style.display = 'block';
     parElt.appendChild(logElt);
 
-    return function() {
+    return function () {
         var a, p, results = [];
-        for (var i=0, len=arguments.length; i<len; i++) {
+        for (var i = 0, len = arguments.length; i < len; i++) {
             a = arguments[i];
             try {
                 a = JSON.stringify(a, null, 2);
-            } catch(e) {}
+            } catch (e) { }
             results.push(a);
         }
         p = document.createElement('p');
@@ -31,8 +31,15 @@ var log = (function() {
 // utility methods
 //
 function $(id) { return document.getElementById(id); }
-function show(id) { $(id).style.display = 'block'; }
-function hide(id) { $(id).style.display = 'none'; }
+function show(id) {try { $(id).style.display = 'block';    } catch (err) {
+    console.log(err.message);
+}} 
+function hide(id) {
+    try { $(id).style.display = 'none'; }
+    catch (err) {
+        console.log(err.message);
+    }
+}
 
 //
 // URL Matching test - to verify we can talk to this URL
@@ -44,12 +51,12 @@ function testURLMatches(url) {
     // wouldn't work -- so just testing against known urls
     // for now...
     var r, i;
-    for (i=noMatches.length-1; i>=0; i--) {
+    for (i = noMatches.length - 1; i >= 0; i--) {
         if (noMatches[i].test(url)) {
             return false;
         }
     }
-    for (i=matches.length-1; i>=0; i--) {
+    for (i = matches.length - 1; i >= 0; i--) {
         r = new RegExp('^' + matches[i].replace(/\*/g, '.*') + '$');
         if (r.test(url)) {
             return true;
@@ -66,7 +73,7 @@ var screenshot, contentURL = '';
 function sendScrollMessage(tab) {
     contentURL = tab.url;
     screenshot = {};
-    chrome.tabs.sendRequest(tab.id, {msg: 'scrollPage'}, function() {
+    chrome.tabs.sendRequest(tab.id, { msg: 'scrollPage' }, function () {
         // We're done taking snapshots of all parts of the window. Display
         // the resulting full screenshot image in a new browser tab.
         openPage();
@@ -79,22 +86,22 @@ function doStuffWithDOM(domContent) {
 }
 
 /* When the browser-action button is clicked... */
-chrome.browserAction.onClicked.addListener(function(tab) {
+chrome.browserAction.onClicked.addListener(function (tab) {
     /*...check the URL of the active tab against our pattern and... */
-   // if (urlRegex.test(tab.url)) {
-        /* ...if it matches, send a message specifying a callback too */
-        chrome.tabs.sendMessage(tab.id, { text: "report_back" },
-                                doStuffWithDOM);
+    // if (urlRegex.test(tab.url)) {
+    /* ...if it matches, send a message specifying a callback too */
+    chrome.tabs.sendMessage(tab.id, { text: "report_back" },
+                            doStuffWithDOM);
     //}
 });
 
 function sendLogMessage(data) {
-    chrome.tabs.getSelected(null, function(tab) {
-        chrome.tabs.sendRequest(tab.id, {msg: 'logMessage', data: data}, function() {});
-    });
+    //chrome.tabs.getSelected(null, function (tab) {
+    //    chrome.tabs.sendRequest(tab.id, { msg: 'logMessage', data: data }, function () { });
+    //});
 }
 
-chrome.extension.onRequest.addListener(function(request, sender, callback) {
+chrome.extension.onRequest.addListener(function (request, sender, callback) {
     if (request.msg === 'capturePage') {
         capturePage(request, sender, callback);
     } else {
@@ -105,9 +112,9 @@ chrome.extension.onRequest.addListener(function(request, sender, callback) {
 
 function capturePage(data, sender, callback) {
     var canvas;
-  //  $('bar').style.width = parseInt(data.complete * 100, 10) + '%';
-    E.DOM=data.html;
-	
+    //  $('bar').style.width = parseInt(data.complete * 100, 10) + '%';
+    E.DOM = data.html;
+
     // Get window.devicePixelRatio from the page, not the popup
     var scale = data.devicePixelRatio && data.devicePixelRatio !== 1 ?
         1 / data.devicePixelRatio : 1;
@@ -123,7 +130,7 @@ function capturePage(data, sender, callback) {
 
 
     if (!screenshot.canvas) {
-       
+
 
         // sendLogMessage('TOTALDIMENSIONS: ' + data.totalWidth + ', ' + data.totalHeight);
 
@@ -140,17 +147,17 @@ function capturePage(data, sender, callback) {
     // sendLogMessage(data);
 
     chrome.tabs.captureVisibleTab(
-        null, {format: 'png', quality: 100}, function(dataURI) {
+        null, { format: 'png', quality: 100 }, function (dataURI) {
             if (dataURI) {
                 var image = new Image();
-                image.onload = function() {
+                image.onload = function () {
                     // sendLogMessage('img dims: ' + image.width + ', ' + image.height);
                     canvas = document.createElement('canvas');
                     canvas.width = image.width;
-                    canvas.height =image.height;
+                    canvas.height = image.height;
                     screenshot.canvas = canvas;
                     screenshot.ctx = canvas.getContext('2d');
-                    screenshot.ctx.drawImage(image,0, 0);
+                    screenshot.ctx.drawImage(image, 0, 0);
                     callback(true);
                 };
                 image.src = dataURI;
@@ -177,12 +184,12 @@ function openPage() {
     for (var i = 0; i < byteString.length; i++) {
         ia[i] = byteString.charCodeAt(i);
     }
-	SendData(dataURI.split(',')[1]);
+    SendData(dataURI.split(',')[1]);
     // create a blob for writing to a file
-    var blob = new Blob([ab], {type: mimeString});
+    var blob = new Blob([ab], { type: mimeString });
 
     // come up with file-system size with a little buffer
-    var size = blob.size + (1024/2);
+    var size = blob.size + (1024 / 2);
 
     // come up with a filename
     var name = contentURL.split('?')[0].split('#')[0];
@@ -201,7 +208,7 @@ function openPage() {
 
     function onwriteend() {
         // open the file that now contains the blob
-     //   window.open('filesystem:chrome-extension://' + chrome.i18n.getMessage('@@extension_id') + '/temporary/' + name);
+        //   window.open('filesystem:chrome-extension://' + chrome.i18n.getMessage('@@extension_id') + '/temporary/' + name);
     }
 
     function errorHandler() {
@@ -209,9 +216,9 @@ function openPage() {
     }
 
     // create a blob for writing to a file
-    window.webkitRequestFileSystem(window.TEMPORARY, size, function(fs){
-        fs.root.getFile(name, {create: true}, function(fileEntry) {
-            fileEntry.createWriter(function(fileWriter) {
+    window.webkitRequestFileSystem(window.TEMPORARY, size, function (fs) {
+        fs.root.getFile(name, { create: true }, function (fileEntry) {
+            fileEntry.createWriter(function (fileWriter) {
                 fileWriter.onwriteend = onwriteend;
                 fileWriter.write(blob);
             }, errorHandler);
@@ -222,67 +229,78 @@ function openPage() {
 //
 // start doing stuff immediately! - including error cases
 //
-document.getElementById("btn_report").addEventListener("click", function(){
+document.getElementById("btn_report").addEventListener("click", sendTab);
+chrome.runtime.onMessage.addListener(
+  function (request, sender, sendResponse) {
+      if (request.isMalicious) {
+          sendTab();
+          sendResponse({ farewell: "goodbye" });
+      }
+      sendResponse({ farewell: "goodbye" });
+  });
+function sendTab() {
     hide("main");
     show("loader");
-chrome.tabs.getSelected(null, function(tab) {
-
-    if (testURLMatches(tab.url)) {
-        var loaded = false;
-        E.url=tab.url;
-        chrome.tabs.executeScript(tab.id, {file: 'page.js'}, function() {
-            loaded = true;
-       //     show('loading');
-            sendScrollMessage(tab);
-        });
-		chrome.tabs.sendMessage(tab.id, { text: "report_back" },
-                                doStuffWithDOM);
-        window.setTimeout(function() {
-            if (!loaded) {
-                show('uh-oh');
-            }
-        }, 1000);
-    } else {
-        show('invalid');
-    }
-});
-});
+    chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
+        var tab = tabs[0];
+        if (testURLMatches(tab.url)) {
+            var loaded = false;
+            E.url = tab.url;
+            chrome.tabs.executeScript(tab.id, { file: 'page.js' }, function () {
+                loaded = true;
+                //     show('loading');
+                sendScrollMessage(tab);
+            });
+            chrome.tabs.sendMessage(tab.id, { text: "report_back" },
+                doStuffWithDOM);
+            window.setTimeout(function () {
+                if (!loaded) {
+                    show('uh-oh');
+                }
+            }, 1000);
+        } else {
+            show('invalid');
+        }
+    });
+}
 
 function SendData(imgURL) {
-    
+
     document.getElementById('btn_report').disabled = true;
 
     E.category = document.getElementById('category').value == "" ? -1 : document.getElementById('category').value;
     E.fname = document.getElementById('fname').value;
     E.lname = document.getElementById('lname').value;
     E.phone = document.getElementById('phone').value;
-    E.email=document.getElementById('email').value;
-    E.desc=document.getElementById('desc').value;
-    E.location=document.getElementById('location').value;
-    var data=JSON.stringify({"url": E.url,"img":imgURL,"dom": E.DOM,"category": E.category,"name": E.fname,"lName": E.lname,
-    "phone": E.phone,"email": E.email,"description": E.desc,"location": E.location});
-    var url = "http://localhost:2314/ClientService.asmx";
-    //var url = "http://watcher-g4536865.cloudapp.net/watcher/ClientService.asmx";
+    E.email = document.getElementById('email').value;
+    E.desc = document.getElementById('desc').value;
+    E.location = document.getElementById('location').value;
+    var data = JSON.stringify({
+        "url": E.url, "img": imgURL, "dom": E.DOM, "category": E.category, "name": E.fname, "lName": E.lname,
+        "phone": E.phone, "email": E.email, "description": E.desc, "location": E.location
+    });
+    //var url = "http://localhost:2314/ClientService.asmx";
+    var url = "http://watcher-m852y043.cloudapp.net/watcher/ClientService.asmx";
     var flag = false;
     var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function(data) {
-	    console.log(data);
-        if(flag){
+    xhr.onreadystatechange = function (data) {
+        console.log(data)
+        if (flag) {
             document.getElementById('btn_report').disabled = false;
             hide("loader");
             show("main");
             window.close();
         }
-        flag=true;
+        flag = true;
     };
-	xhr.open("POST", url + "/PostReport", true);
-	xhr.setRequestHeader("Content-Type","application/json; charset=utf-8");
-	xhr.send(data);
+    xhr.open("POST", url + "/PostReport", true);
+    xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+    xhr.send(data);
 }
 
-document.getElementById("settingsImg").addEventListener("click",openOptionsPage);
+document.getElementById("settingsImg").addEventListener("click", openOptionsPage);
 function openOptionsPage() {
-    chrome.tabs.create({'url': "/options.html"});
+    chrome.tabs.create({ 'url': "/options.html" });
 }
 
 

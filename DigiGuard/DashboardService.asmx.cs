@@ -51,7 +51,7 @@ namespace DigiGuard
             {
                 using (DGGuardEntities entities = new DGGuardEntities())
                 {
-                    var data = entities.FactReports.Where(x => x.StatusID != 2).ToList();
+                    var data = entities.FactReports.Where(x => x.StatusID < 2).ToList();
                     foreach (FactReport report in data)
                     {
                         Cluster c = list.FirstOrDefault(x => String.Equals(x.URL, report.URL));
